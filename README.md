@@ -1,1 +1,0 @@
-# snehashish.com
