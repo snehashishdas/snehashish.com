@@ -277,7 +277,15 @@ const institutionalActivities = {
     },
     {
       role: 'Theatre Practitioner',
-      details: 'Wrote/directed/acted in Odia play "Kabata Kholile Pila Dina" at BJB Junior College (2014)',
+      details: 'Wrote, directed, and acted in the Odia play Kabata Kholile Pila Dina at BJB Junior College, Bhubaneswar (2014)',
+    },
+    {
+      role: 'Theatre Practitioner',
+      details: 'Acted in the Hindi street play Ek Khwab Aaya at Jawaharlal Nehru University (2021)',
+    },
+    {
+      role: 'Theatre Practitioner',
+      details: 'Wrote and directed the Hindi street play Dronacharya Ka Angutha at Jawaharlal Nehru University (2023)',
     },
   ],
 }
