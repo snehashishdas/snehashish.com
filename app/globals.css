@@ -22,7 +22,7 @@
   --secondary: oklch(0.95 0.005 90);
   --secondary-foreground: oklch(0.30 0.01 60);
   --muted: oklch(0.94 0.005 90);
-  --muted-foreground: oklch(0.50 0.01 60);
+  --muted-foreground: oklch(0.48 0.012 60);
   --accent: oklch(0.45 0.08 30);
   --accent-foreground: oklch(0.98 0.005 90);
   --destructive: oklch(0.577 0.245 27.325);
@@ -105,15 +105,169 @@
   }
   body {
     @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  }
+  /* Display serif: ligatures + tighter optical spacing for monograph feel */
+  .font-serif {
+    font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1;
+  }
+  /* Old-style/tabular numerals where dates and volumes appear */
+  time,
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
   }
 }
 
-/* Selection styling */
-::selection {
-  background-color: oklch(0.45 0.08 30 / 0.2);
+/* ----------------------------------------------------------------------------
+   Typographic scale — named roles, fluid sizing.
+   Used by shared components and available site-wide. Page files keep their
+   existing utility classes; these formalize the hierarchy where applied.
+---------------------------------------------------------------------------- */
+@layer components {
+  .type-page-title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1.04;
+    letter-spacing: -0.018em;
+    color: var(--foreground);
+  }
+  .type-section-title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.15;
+    letter-spacing: 0.005em;
+    color: var(--foreground);
+  }
+  .type-subsection {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.3;
+    color: var(--foreground);
+  }
+  .type-eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+  .type-meta {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    font-variant-numeric: tabular-nums;
+  }
+  .type-body {
+    font-family: var(--font-sans);
+    font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
+    line-height: 1.7;
+    color: color-mix(in oklch, var(--foreground) 82%, transparent);
+  }
+  /* Readable measure for long scholarly paragraphs */
+  .measure {
+    max-width: 68ch;
+  }
 }
 
-/* Smooth scrolling */
+/* ----------------------------------------------------------------------------
+   Editorial buttons & links — restrained, ink-on-parchment, no SaaS gloss.
+---------------------------------------------------------------------------- */
+@layer components {
+  /* Primary editorial action: outlined, warms toward bronze on hover */
+  .btn-editorial {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.125rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--foreground);
+    border: 1px solid color-mix(in oklch, var(--foreground) 55%, transparent);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  }
+  .btn-editorial:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: color-mix(in oklch, var(--accent) 6%, transparent);
+  }
+  /* Small reference chip: DOI / Read Article / View Publication */
+  .chip-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--foreground);
+    border: 1px solid color-mix(in oklch, var(--foreground) 22%, transparent);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+  }
+  .chip-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: color-mix(in oklch, var(--accent) 6%, transparent);
+  }
+  /* Inline underline link (e.g. Listen Now) */
+  .link-rule {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--foreground);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 0.125rem;
+    transition: border-color 0.25s ease, color 0.25s ease;
+  }
+  .link-rule:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Selection, focus, motion
+---------------------------------------------------------------------------- */
+::selection {
+  background-color: oklch(0.45 0.08 30 / 0.18);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

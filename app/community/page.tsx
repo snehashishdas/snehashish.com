@@ -1,6 +1,4 @@
-import { SiteHeader } from "@/components/site-header"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { SiteNav } from "@/components/site-nav"
 import { ContactSection } from "@/components/contact-section"
 import {
   Accordion,
@@ -10,8 +8,9 @@ import {
 } from "@/components/ui/accordion"
 
 export const metadata = {
-  title: "Community | Snehashish Das",
+  title: "Community",
   description: "Community education, panel discussions, internships, workshops, and institutional initiatives by Snehashish Das",
+  alternates: { canonical: "/community" },
 }
 
 // Theme grouping for panel discussions
@@ -295,10 +294,9 @@ const collaborators = ['Jean Drèze', 'Reetika Khera', 'Apurva Bamezai', 'Aakash
 export default function CommunityPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <SiteHeader />
-      <Header />
-      
-      <main className="flex-1 mt-14 md:mt-0">
+      <SiteNav />
+
+      <main className="flex-1">
         <div className="max-w-4xl mx-auto px-6 py-12 md:py-20">
           {/* Page Title & Subtitle */}
           <div className="mb-20">
@@ -675,8 +673,6 @@ export default function CommunityPage() {
           <ContactSection />
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }
