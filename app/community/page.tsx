@@ -302,7 +302,189 @@ const institutionalActivities = {
 
 const collaborators = ['Jean Drèze', 'Reetika Khera', 'Apurva Bamezai', 'Aakash Ranjan', 'Rahee S G']
 
+// ─── Unified archive entries for "Advocacy, Training, Workshops & Conventions"
+// All entries sorted most-recent → oldest. Year is extracted from each entry
+// for grouping. Content is unchanged; only structure and sort order are new.
+type ArchiveEntry = {
+  year: number
+  id: string
+  title: string
+  role: string
+  meta: string // date · location
+  details: React.ReactNode
+}
+
+// Helper: render document links (reused from communityEducationPrograms)
+function DocumentLinks({ documents }: { documents: { title: string; year: string; file: string }[] }) {
+  return (
+    <div className="border-t border-border/40 pt-4 mt-2">
+      <p className="type-meta mb-3">Documentation</p>
+      <ul className="space-y-4">
+        {documents.map((doc) => (
+          <li key={doc.file} className="flex items-start gap-3">
+            <svg
+              className="mt-0.5 size-[18px] flex-shrink-0 text-muted-foreground"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.5}
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M14 3v4a1 1 0 001 1h4M14 3H7a1 1 0 00-1 1v16a1 1 0 001 1h10a1 1 0 001-1V8M14 3l4 5"
+              />
+            </svg>
+            <div className="min-w-0">
+              <p className="text-sm md:text-base text-foreground/85">
+                {doc.title}{' '}
+                <span className="text-muted-foreground">(PDF)</span>
+              </p>
+              <p className="type-meta mt-1">Year: {doc.year}</p>
+              <div className="mt-2.5 flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a
+                  href={encodeURI(doc.file)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-rule text-sm"
+                >
+                  View Report
+                </a>
+                <a
+                  href={encodeURI(doc.file)}
+                  download
+                  className="link-rule text-sm"
+                >
+                  Download PDF
+                </a>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 export default function CommunityPage() {
+  // ── Unified archive: all entries from Advocacy / Training / Workshops / Conventions / Internships
+  // Sorted most-recent → oldest. Year groups are derived from this array.
+  const archiveEntries: ArchiveEntry[] = [
+    // 2016 — Gandhi Youth Camp (March 2015 but filed under 2015; year below)
+    // internship-napm — December 2016
+    {
+      year: 2016,
+      id: 'internship-napm',
+      title: 'National Alliance of People\'s Movements (NAPM), New Delhi',
+      role: 'Field Intern',
+      meta: 'December 2016 · New Delhi',
+      details: (
+        <div className="space-y-3">
+          <div>
+            <p className="type-meta mb-1">Focus</p>
+            <p className="text-sm md:text-base text-foreground/75">Housing rights and anti-eviction advocacy</p>
+          </div>
+          <div>
+            <p className="type-meta mb-1">Role</p>
+            <p className="text-sm md:text-base text-foreground/75">Supported the Kathputli Colony resistance movement against forced demolition</p>
+          </div>
+        </div>
+      ),
+    },
+    // workshop-rtf — September 2016
+    {
+      year: 2016,
+      id: 'workshop-rtf',
+      title: '6th National Convention of Right to Food Campaign',
+      role: 'Participant & Volunteer',
+      meta: '23rd–25th September 2016 · Ranchi',
+      details: (
+        <p className="text-sm md:text-base text-foreground/75">Held in Ranchi (23rd–25th September 2016)</p>
+      ),
+    },
+    // internship-ashirvad — May 2016
+    {
+      year: 2016,
+      id: 'internship-ashirvad',
+      title: 'Ashirvad NGO, East Sikkim',
+      role: 'Field Researcher',
+      meta: 'May 2016 (3 days) · East Sikkim',
+      details: (
+        <div className="space-y-3">
+          <div>
+            <p className="type-meta mb-1">Focus</p>
+            <p className="text-sm md:text-base text-foreground/75">Socioeconomic-cultural study of Pakyong district communities</p>
+          </div>
+          <div>
+            <p className="type-meta mb-1">Role</p>
+            <p className="text-sm md:text-base text-foreground/75">Conducted field research on livelihoods and local traditions</p>
+          </div>
+        </div>
+      ),
+    },
+    // internship-gandhi — March 2015
+    {
+      year: 2015,
+      id: 'internship-gandhi',
+      title: 'Gandhi Youth Camp, Puri, Odisha',
+      role: 'Participant',
+      meta: 'March 2015 (5-day residential programme) · Puri, Odisha',
+      details: (
+        <div className="space-y-3">
+          <div>
+            <p className="type-meta mb-1">Focus</p>
+            <p className="text-sm md:text-base text-foreground/75">Grassroots development training through fieldwork</p>
+          </div>
+          <div>
+            <p className="type-meta mb-1">Organizers</p>
+            <p className="text-sm md:text-base text-foreground/75">Gandhi Bichar Abhiyan & Gandhi Peace Centre</p>
+          </div>
+          <div>
+            <p className="type-meta mb-1">Venue</p>
+            <p className="text-sm md:text-base text-foreground/75">Gopabandhu Daridra Narayan Seva Sangh, Sakhigopal</p>
+          </div>
+        </div>
+      ),
+    },
+    // workshop-gender-sexuality — March 2017
+    {
+      year: 2017,
+      id: 'workshop-gender-sexuality',
+      title: 'Workshop on "Gender and Sexuality, Sexual Health, Sexual Violence and Related Laws"',
+      role: 'Participant',
+      meta: '18th–19th March 2017 · Guwahati',
+      details: (
+        <p className="text-sm md:text-base text-foreground/75">Conducted by the Foundation for Social Transformation, Guwahati (18th–19th March 2017)</p>
+      ),
+    },
+    // workshop-himalayan — November 2017
+    {
+      year: 2017,
+      id: 'workshop-himalayan',
+      title: 'Eastern Himalayan Naturenomics Forum',
+      role: 'Rapporteur',
+      meta: '2nd–3rd November 2017 · Guwahati, Assam',
+      details: (
+        <p className="text-sm md:text-base text-foreground/75">Organized by the Balipara Foundation, Guwahati, Assam (2nd–3rd November 2017)</p>
+      ),
+    },
+  ]
+
+  // Sort most-recent → oldest
+  const sortedEntries = [...archiveEntries].sort((a, b) => b.year - a.year)
+
+  // Group by year
+  const entriesByYear = sortedEntries.reduce<Record<number, ArchiveEntry[]>>((acc, entry) => {
+    if (!acc[entry.year]) acc[entry.year] = []
+    acc[entry.year].push(entry)
+    return acc
+  }, {})
+
+  const years = Object.keys(entriesByYear)
+    .map(Number)
+    .sort((a, b) => b - a)
+
   return (
     <div className="min-h-screen flex flex-col bg-background" style={{ ['--page-accent' as keyof CSSProperties]: 'var(--color-research-charcoal)' } as CSSProperties}>
       <SiteNav />
@@ -355,9 +537,9 @@ export default function CommunityPage() {
                         <h4 className="font-serif text-base md:text-lg text-foreground mb-2">
                           "{talk.title}"
                         </h4>
-                        {talk.event && (
+                        {(talk as any).event && (
                           <p className="text-sm text-muted-foreground mb-1">
-                            {talk.event}
+                            {(talk as any).event}
                           </p>
                         )}
                         <p className="text-sm text-muted-foreground italic">
@@ -457,55 +639,7 @@ export default function CommunityPage() {
                     )}
 
                     {program.documents && (
-                      <div className="border-t border-border/50 pt-6">
-                        <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-4">
-                          Documentation
-                        </p>
-                        <ul className="space-y-5">
-                          {program.documents.map((doc) => (
-                            <li key={doc.file} className="flex items-start gap-3">
-                              <svg
-                                className="mt-0.5 size-[18px] flex-shrink-0 text-muted-foreground"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={1.5}
-                                aria-hidden="true"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M14 3v4a1 1 0 001 1h4M14 3H7a1 1 0 00-1 1v16a1 1 0 001 1h10a1 1 0 001-1V8M14 3l4 5"
-                                />
-                              </svg>
-                              <div className="min-w-0">
-                                <p className="text-sm md:text-base text-foreground/85">
-                                  {doc.title}{' '}
-                                  <span className="text-muted-foreground">(PDF)</span>
-                                </p>
-                                <p className="type-meta mt-1">Year: {doc.year}</p>
-                                <div className="mt-2.5 flex flex-wrap items-center gap-x-6 gap-y-2">
-                                  <a
-                                    href={encodeURI(doc.file)}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="link-rule text-sm"
-                                  >
-                                    View Report
-                                  </a>
-                                  <a
-                                    href={encodeURI(doc.file)}
-                                    download
-                                    className="link-rule text-sm"
-                                  >
-                                    Download PDF
-                                  </a>
-                                </div>
-                              </div>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      <DocumentLinks documents={program.documents} />
                     )}
                   </AccordionContent>
                 </AccordionItem>
@@ -513,192 +647,86 @@ export default function CommunityPage() {
             </Accordion>
           </section>
 
-          {/* SECTION 3 & 4 MERGED: Advocacy, Training, Workshops & Conventions */}
+          {/* SECTION 3: Advocacy, Training, Workshops & Conventions — unified archive */}
           <section className="mb-28 md:mb-40 border-t border-border pt-28 md:pt-40">
-            <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
+            <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-12 tracking-wide">
               Advocacy, Training, Workshops & Conventions
             </h2>
 
-            <Accordion type="single" collapsible className="space-y-6">
+            <div className="space-y-0">
+              {years.map((year, yearIdx) => (
+                <div key={year} className={yearIdx > 0 ? 'mt-8' : ''}>
+                  {/* Year divider — subtle, non-dominant */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <span
+                      className="font-sans text-[0.6rem] font-semibold tracking-[0.22em] uppercase text-muted-foreground/60 tabular-nums select-none"
+                    >
+                      {year}
+                    </span>
+                    <span className="flex-1 h-px bg-border/30" aria-hidden="true" />
+                  </div>
 
-              {/* 2016 entries */}
-              <div className="flex items-center gap-4 mb-2 mt-2">
-                <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">2016</span>
-                <span className="flex-1 h-px bg-border/40" aria-hidden="true" />
-              </div>
-
-              <AccordionItem
-                value="internship-gandhi"
-                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
-                style={{ borderLeftColor: '#2D5016' }}
-              >
-                <AccordionTrigger className="py-0 hover:no-underline group">
-                  <div className="text-left">
-                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
-                      Gandhi Youth Camp, Puri, Odisha
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      March 2015 (5-day residential programme)
-                    </p>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-8 pb-0 space-y-4">
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Focus</p>
-                    <p className="text-sm md:text-base text-foreground/75">Grassroots development training through fieldwork</p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Organizers</p>
-                    <p className="text-sm md:text-base text-foreground/75">Gandhi Bichar Abhiyan & Gandhi Peace Centre</p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Venue</p>
-                    <p className="text-sm md:text-base text-foreground/75">Gopabandhu Daridra Narayan Seva Sangh, Sakhigopal</p>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem
-                value="internship-ashirvad"
-                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
-                style={{ borderLeftColor: '#2D5016' }}
-              >
-                <AccordionTrigger className="py-0 hover:no-underline group">
-                  <div className="text-left">
-                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
-                      Ashirvad NGO, East Sikkim
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-1">May 2016 (3 days)</p>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-8 pb-0 space-y-4">
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Focus</p>
-                    <p className="text-sm md:text-base text-foreground/75">Socioeconomic-cultural study of Pakyong district communities</p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Role</p>
-                    <p className="text-sm md:text-base text-foreground/75">Conducted field research on livelihoods and local traditions</p>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem
-                value="workshop-rtf"
-                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
-                style={{ borderLeftColor: '#2D5016' }}
-              >
-                <AccordionTrigger className="py-0 hover:no-underline group">
-                  <div className="text-left">
-                    <p className="text-xs font-medium mb-2" style={{ color: '#2D5016' }}>Participant & Volunteer</p>
-                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
-                      6th National Convention of Right to Food Campaign
-                    </h3>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-6 pb-0">
-                  <p className="text-sm md:text-base text-foreground/75">Held in Ranchi (23rd–25th September 2016)</p>
-                </AccordionContent>
-              </AccordionItem>
-
-              {/* 2017 entries */}
-              <div className="flex items-center gap-4 mb-2 mt-6">
-                <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">2017</span>
-                <span className="flex-1 h-px bg-border/40" aria-hidden="true" />
-              </div>
-
-              <AccordionItem
-                value="workshop-gender-sexuality"
-                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
-                style={{ borderLeftColor: '#2D5016' }}
-              >
-                <AccordionTrigger className="py-0 hover:no-underline group">
-                  <div className="text-left">
-                    <p className="text-xs font-medium mb-2" style={{ color: '#2D5016' }}>Participant</p>
-                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
-                      Workshop on "Gender and Sexuality, Sexual Health, Sexual Violence and Related Laws"
-                    </h3>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-6 pb-0">
-                  <p className="text-sm md:text-base text-foreground/75">Conducted by the Foundation for Social Transformation, Guwahati (18th–19th March 2017)</p>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem
-                value="workshop-himalayan"
-                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
-                style={{ borderLeftColor: '#2D5016' }}
-              >
-                <AccordionTrigger className="py-0 hover:no-underline group">
-                  <div className="text-left">
-                    <p className="text-xs font-medium mb-2" style={{ color: '#2D5016' }}>Rapporteur</p>
-                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
-                      Eastern Himalayan Naturenomics Forum
-                    </h3>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-6 pb-0">
-                  <p className="text-sm md:text-base text-foreground/75">Organized by the Balipara Foundation, Guwahati, Assam (2nd–3rd November 2017)</p>
-                </AccordionContent>
-              </AccordionItem>
-
-              {/* 2016 (Dec) — NAPM */}
-              <div className="flex items-center gap-4 mb-2 mt-6">
-                <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">2016</span>
-                <span className="flex-1 h-px bg-border/40" aria-hidden="true" />
-              </div>
-
-              <AccordionItem
-                value="internship-napm"
-                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
-                style={{ borderLeftColor: '#2D5016' }}
-              >
-                <AccordionTrigger className="py-0 hover:no-underline group">
-                  <div className="text-left">
-                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
-                      National Alliance of People's Movements (NAPM), New Delhi
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-1">December 2016</p>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-8 pb-0 space-y-4">
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Focus</p>
-                    <p className="text-sm md:text-base text-foreground/75">Housing rights and anti-eviction advocacy</p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Role</p>
-                    <p className="text-sm md:text-base text-foreground/75">Supported the Kathputli Colony resistance movement against forced demolition</p>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-            </Accordion>
+                  {/* Per-year accordion — entries are valid AccordionItem children */}
+                  <Accordion type="single" collapsible className="space-y-[2px]">
+                    {entriesByYear[year].map((entry) => (
+                      <AccordionItem
+                        key={entry.id}
+                        value={entry.id}
+                        className="border border-border/35 rounded-[2px] px-5 md:px-6 py-3.5 md:py-4 bg-card/20 hover:bg-card/40 transition-colors"
+                      >
+                        <AccordionTrigger className="py-0 hover:no-underline group [&>svg]:text-muted-foreground/50 [&>svg]:shrink-0 [&>svg]:ml-3">
+                          <div className="text-left flex-1 min-w-0">
+                            <h3 className="font-serif text-[0.975rem] md:text-base text-foreground group-hover:text-foreground/80 transition-colors leading-snug">
+                              {entry.title}
+                            </h3>
+                            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0 mt-1">
+                              <span
+                                className="font-sans text-[0.6rem] font-semibold tracking-[0.18em] uppercase"
+                                style={{ color: 'var(--color-research-charcoal)', opacity: 0.7 }}
+                              >
+                                {entry.role}
+                              </span>
+                              <span className="text-border text-[0.6rem]" aria-hidden="true">·</span>
+                              <span className="font-sans text-[0.6rem] tracking-[0.14em] uppercase text-muted-foreground/55 tabular-nums">
+                                {entry.meta}
+                              </span>
+                            </div>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="pt-3 pb-0.5">
+                          <div className="border-t border-border/25 pt-3">
+                            {entry.details}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+              ))}
+            </div>
           </section>
 
-          {/* SECTION 5: Other Entries From My Diary (idk why) */}
+          {/* SECTION 4: Diary's Entries, don't ask */}
           <section className="border-t border-border pt-28 md:pt-40">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
-              Other Entries From My Diary (idk why)
+              Diary's Entries, don't ask
             </h2>
 
-            <Accordion type="single" collapsible className="space-y-6">
+            <Accordion type="single" collapsible className="space-y-2">
               {/* Event Management & Programming */}
               <AccordionItem
                 value="event-management"
-                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
-                style={{ borderLeftColor: '#5C4A6B' }}
+                className="border border-border/40 rounded-sm px-5 md:px-7 py-4 md:py-5"
               >
                 <AccordionTrigger className="py-0 hover:no-underline group">
-                  <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
+                  <h3 className="font-serif text-base md:text-lg text-foreground group-hover:text-foreground/80 transition-colors text-left">
                     Event Management & Programming
                   </h3>
                 </AccordionTrigger>
 
-                <AccordionContent className="pt-8 pb-0 space-y-6">
+                <AccordionContent className="pt-5 pb-0 space-y-5">
                   {institutionalActivities.eventManagement.map((item, idx) => (
-                    <div key={idx} className="pb-6 border-b border-border/20 last:border-0 last:pb-0">
+                    <div key={idx} className="pb-5 border-b border-border/20 last:border-0 last:pb-0">
                       <p className="text-xs font-medium mb-1" style={{ color: '#5C4A6B' }}>
                         {item.role}
                       </p>
@@ -706,7 +734,7 @@ export default function CommunityPage() {
                         {item.title}{item.organization ? ` — ${item.organization}` : ''}
                       </p>
                       {item.date && (
-                        <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                        <p className="type-meta">
                           {item.date}
                         </p>
                       )}
@@ -723,18 +751,17 @@ export default function CommunityPage() {
               {/* Institutional Initiatives */}
               <AccordionItem
                 value="institutional"
-                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
-                style={{ borderLeftColor: '#5C4A6B' }}
+                className="border border-border/40 rounded-sm px-5 md:px-7 py-4 md:py-5"
               >
                 <AccordionTrigger className="py-0 hover:no-underline group">
-                  <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
+                  <h3 className="font-serif text-base md:text-lg text-foreground group-hover:text-foreground/80 transition-colors text-left">
                     Institutional Initiatives
                   </h3>
                 </AccordionTrigger>
 
-                <AccordionContent className="pt-8 pb-0 space-y-6">
+                <AccordionContent className="pt-5 pb-0 space-y-5">
                   {institutionalActivities.institutional.map((item, idx) => (
-                    <div key={idx} className="pb-6 border-b border-border/20 last:border-0 last:pb-0">
+                    <div key={idx} className="pb-5 border-b border-border/20 last:border-0 last:pb-0">
                       <p className="text-xs font-medium mb-1" style={{ color: '#5C4A6B' }}>
                         {item.role}
                       </p>
@@ -742,8 +769,8 @@ export default function CommunityPage() {
                         {item.title}{item.details ? ` — ${item.details}` : ''}
                       </p>
                       {item.organization && (
-                        <p className="text-xs uppercase tracking-widest text-muted-foreground mt-1">
-                          {item.organization}{item.date ? ` • ${item.date}` : ''}
+                        <p className="type-meta mt-1">
+                          {item.organization}{item.date ? ` · ${item.date}` : ''}
                         </p>
                       )}
                     </div>
@@ -754,18 +781,17 @@ export default function CommunityPage() {
               {/* Community Engagement */}
               <AccordionItem
                 value="community-engagement"
-                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
-                style={{ borderLeftColor: '#5C4A6B' }}
+                className="border border-border/40 rounded-sm px-5 md:px-7 py-4 md:py-5"
               >
                 <AccordionTrigger className="py-0 hover:no-underline group">
-                  <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
+                  <h3 className="font-serif text-base md:text-lg text-foreground group-hover:text-foreground/80 transition-colors text-left">
                     Community Engagement
                   </h3>
                 </AccordionTrigger>
 
-                <AccordionContent className="pt-8 pb-0 space-y-6">
+                <AccordionContent className="pt-5 pb-0 space-y-5">
                   {institutionalActivities.community.map((item, idx) => (
-                    <div key={idx} className="pb-6 border-b border-border/20 last:border-0 last:pb-0">
+                    <div key={idx} className="pb-5 border-b border-border/20 last:border-0 last:pb-0">
                       <p className="text-xs font-medium mb-1" style={{ color: '#5C4A6B' }}>
                         {item.role}
                       </p>
@@ -775,8 +801,8 @@ export default function CommunityPage() {
                         </p>
                       )}
                       {item.organization && (
-                        <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                          {item.organization}{item.date ? ` • ${item.date}` : ''}
+                        <p className="type-meta">
+                          {item.organization}{item.date ? ` · ${item.date}` : ''}
                         </p>
                       )}
                       {item.details && (
@@ -791,7 +817,7 @@ export default function CommunityPage() {
             </Accordion>
           </section>
 
-          {/* SECTION 6: Contact */}
+          {/* SECTION 5: Contact */}
           <ContactSection />
         </div>
       </main>
