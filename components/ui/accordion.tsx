@@ -19,10 +19,11 @@ function AccordionItem({
     <AccordionPrimitive.Item
       data-slot="accordion-item"
       className={cn(
-        // Editorial catalogue entry: calm hairline, warms toward accent when
-        // hovered or open; a subtle parchment lift on the open state.
+        // Catalogue entry: calm hairline that warms toward the accent on hover,
+        // a faint parchment lift when open.
         'group/item transition-colors duration-300',
-        'data-[state=open]:bg-accent/[0.035]',
+        'hover:border-page-accent/40 data-[state=open]:border-page-accent/40',
+        'data-[state=open]:bg-page-accent/[0.05]',
         className,
       )}
       {...props}
@@ -47,13 +48,13 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        {/* Plus / minus marker — rotates to a minus when open */}
+        {/* Circled plus / minus marker — fills and inverts to a minus when open */}
         <span
           aria-hidden="true"
-          className="relative mt-1 size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-colors duration-300 group-hover/item:text-accent group-data-[state=open]/item:text-accent"
+          className="relative mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-300 group-hover/item:border-page-accent group-hover/item:text-page-accent group-data-[state=open]/item:border-page-accent group-data-[state=open]/item:bg-page-accent group-data-[state=open]/item:text-background"
         >
-          <span className="absolute left-1/2 top-1/2 h-px w-3.5 -translate-x-1/2 -translate-y-1/2 bg-current" />
-          <span className="absolute left-1/2 top-1/2 h-3.5 w-px -translate-x-1/2 -translate-y-1/2 bg-current transition-transform duration-300 group-data-[state=open]/item:scale-y-0" />
+          <span className="absolute h-px w-3 bg-current" />
+          <span className="absolute h-3 w-px bg-current transition-transform duration-300 group-data-[state=open]/item:scale-y-0" />
         </span>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
@@ -71,7 +72,7 @@ function AccordionContent({
       className="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
       {...props}
     >
-      <div className={cn('pt-0 pb-4', className)}>{children}</div>
+      <div className={cn('pt-1 pb-5', className)}>{children}</div>
     </AccordionPrimitive.Content>
   )
 }

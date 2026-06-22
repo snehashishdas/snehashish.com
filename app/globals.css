@@ -37,11 +37,13 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.25rem;
   /* Archival-inspired research programme colors */
-  --research-bronze: oklch(0.55 0.1 40);
-  --research-forest: oklch(0.42 0.08 150);
-  --research-indigo: oklch(0.45 0.1 280);
-  --research-charcoal: oklch(0.35 0.02 60);
-  --research-parchment: oklch(0.96 0.008 70);
+  --research-bronze: oklch(0.52 0.11 50);
+  --research-forest: oklch(0.40 0.06 155);
+  --research-indigo: oklch(0.40 0.10 275);
+  --research-charcoal: oklch(0.30 0.015 60);
+  --research-parchment: oklch(0.965 0.008 75);
+  /* Cascading section accent — defaults to brand bronze, overridden per page */
+  --page-accent: var(--accent);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -85,6 +87,7 @@
   --color-research-indigo: var(--research-indigo);
   --color-research-charcoal: var(--research-charcoal);
   --color-research-parchment: var(--research-parchment);
+  --color-page-accent: var(--page-accent);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -110,11 +113,9 @@
     text-rendering: optimizeLegibility;
     font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   }
-  /* Display serif: ligatures + tighter optical spacing for monograph feel */
   .font-serif {
     font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1;
   }
-  /* Old-style/tabular numerals where dates and volumes appear */
   time,
   .tabular-nums {
     font-variant-numeric: tabular-nums;
@@ -122,31 +123,29 @@
 }
 
 /* ----------------------------------------------------------------------------
-   Typographic scale — named roles, fluid sizing.
-   Used by shared components and available site-wide. Page files keep their
-   existing utility classes; these formalize the hierarchy where applied.
+   Typographic scale — named roles, fluid sizing, editorial rhythm.
 ---------------------------------------------------------------------------- */
 @layer components {
   .type-page-title {
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(2.25rem, 5vw, 4rem);
-    line-height: 1.04;
-    letter-spacing: -0.018em;
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    line-height: 1.03;
+    letter-spacing: -0.02em;
     color: var(--foreground);
   }
   .type-section-title {
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    line-height: 1.15;
-    letter-spacing: 0.005em;
+    font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.005em;
     color: var(--foreground);
   }
   .type-subsection {
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-size: clamp(1.1875rem, 2vw, 1.4375rem);
     line-height: 1.3;
     color: var(--foreground);
   }
@@ -154,76 +153,111 @@
     font-family: var(--font-sans);
     font-weight: 600;
     font-size: 0.6875rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--muted-foreground);
+    color: var(--page-accent);
   }
   .type-meta {
     font-family: var(--font-sans);
     font-size: 0.6875rem;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.17em;
     text-transform: uppercase;
     color: var(--muted-foreground);
     font-variant-numeric: tabular-nums;
   }
+  .type-lead {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+    line-height: 1.65;
+    color: color-mix(in oklch, var(--foreground) 80%, transparent);
+  }
   .type-body {
     font-family: var(--font-sans);
     font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
-    line-height: 1.7;
+    line-height: 1.75;
     color: color-mix(in oklch, var(--foreground) 82%, transparent);
   }
-  /* Readable measure for long scholarly paragraphs */
+  /* Reading measures for long scholarly prose */
   .measure {
-    max-width: 68ch;
+    max-width: 66ch;
+  }
+  .measure-wide {
+    max-width: 74ch;
+  }
+  /* Hairline editorial rule */
+  .rule {
+    height: 1px;
+    width: 100%;
+    background: var(--border);
   }
 }
 
 /* ----------------------------------------------------------------------------
-   Editorial buttons & links — restrained, ink-on-parchment, no SaaS gloss.
+   Editorial buttons & links — ink on parchment, no SaaS gloss.
 ---------------------------------------------------------------------------- */
 @layer components {
-  /* Primary editorial action: outlined, warms toward bronze on hover */
   .btn-editorial {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.625rem 1.125rem;
+    padding: 0.6875rem 1.25rem;
     font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 500;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
     color: var(--foreground);
     border: 1px solid color-mix(in oklch, var(--foreground) 55%, transparent);
     border-radius: var(--radius-sm);
     background: transparent;
-    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+    transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
   }
   .btn-editorial:hover {
     border-color: var(--accent);
     color: var(--accent);
-    background: color-mix(in oklch, var(--accent) 6%, transparent);
+    background: color-mix(in oklch, var(--accent) 7%, transparent);
   }
-  /* Small reference chip: DOI / Read Article / View Publication */
+  /* Hero navigation link — inverts to solid on hover (premium toggle) */
+  .btn-hero {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.625rem 1.125rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--background);
+    border: 1px solid color-mix(in oklch, var(--background) 32%, transparent);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  }
+  .btn-hero:hover {
+    color: var(--foreground);
+    background: var(--background);
+    border-color: var(--background);
+  }
+  /* Reference chip: DOI / Read Article / View Publication */
   .chip-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 0.875rem;
+    padding: 0.5rem 0.9375rem;
     font-family: var(--font-sans);
     font-size: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--foreground);
     border: 1px solid color-mix(in oklch, var(--foreground) 22%, transparent);
     border-radius: var(--radius-sm);
     background: transparent;
-    transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+    transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
   }
   .chip-link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: color-mix(in oklch, var(--accent) 6%, transparent);
+    border-color: var(--page-accent);
+    color: var(--page-accent);
+    background: color-mix(in oklch, var(--page-accent) 8%, transparent);
   }
   /* Inline underline link (e.g. Listen Now) */
   .link-rule {
@@ -232,13 +266,14 @@
     gap: 0.5rem;
     font-weight: 500;
     color: var(--foreground);
-    border-bottom: 1px solid transparent;
-    padding-bottom: 0.125rem;
-    transition: border-color 0.25s ease, color 0.25s ease;
+    border-bottom: 1px solid color-mix(in oklch, var(--foreground) 30%, transparent);
+    padding-bottom: 0.1875rem;
+    transition: border-color 0.3s ease, color 0.3s ease, gap 0.3s ease;
   }
   .link-rule:hover {
-    color: var(--accent);
-    border-color: var(--accent);
+    color: var(--page-accent);
+    border-color: var(--page-accent);
+    gap: 0.6875rem;
   }
 }
 

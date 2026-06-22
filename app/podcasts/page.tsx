@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { SiteNav } from "@/components/site-nav"
 import { ContactSection } from "@/components/contact-section"
 import Image from "next/image"
@@ -46,8 +47,9 @@ const conversations = [
 
 export default function PodcastsPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-background" style={{ ['--page-accent' as keyof CSSProperties]: 'var(--color-research-forest)' } as CSSProperties}>
       <SiteNav />
+      <div className="h-[3px] w-full bg-page-accent" aria-hidden="true" />
 
       <main className="flex-1">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-12">

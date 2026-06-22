@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import { SiteNav } from '@/components/site-nav'
 import { ContactSection } from '@/components/contact-section'
@@ -201,7 +202,8 @@ export default function ResearchPage() {
   return (
     <>
       <SiteNav />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background" style={{ ['--page-accent' as keyof CSSProperties]: 'var(--color-research-bronze)' } as CSSProperties}>
+      <div className="h-[3px] w-full bg-page-accent" aria-hidden="true" />
         {/* Hero Section */}
       <section className="py-24 md:py-32 bg-background border-b border-border">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-12">

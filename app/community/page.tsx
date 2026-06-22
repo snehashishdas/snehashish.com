@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { SiteNav } from "@/components/site-nav"
 import { ContactSection } from "@/components/contact-section"
 import {
@@ -158,6 +159,10 @@ const communityEducationPrograms = [
     locations: 'Gumla, Latehar, and Lohardaga districts, Jharkhand; Sarguja district, Chhattisgarh',
     partnerOrganizations: 'Department of Welfare, Government of Jharkhand; Department of Tribal & SC Development, Government of Chhattisgarh',
     additionalRole: 'Concurrent teaching at Jobhipat School, Gumla',
+    documents: [
+      { title: 'Jharkhand Chapter Report', year: '2018', file: '/documents/Sahpathi 2018 Jharkhand.pdf' },
+      { title: 'Chhattisgarh Chapter Report', year: '2018', file: '/documents/Sahpathi 2018 Chhattisgarh.pdf' },
+    ],
   },
   {
     year: '2017',
@@ -166,6 +171,9 @@ const communityEducationPrograms = [
     period: 'June–July 2017',
     institution: 'Jobhipat Residential School (Adivasi School), Gumla, Jharkhand',
     partnerOrganizations: 'Department of Welfare, Government of Jharkhand',
+    documents: [
+      { title: 'Sahpathi Project Report', year: '2017', file: '/documents/Sahpathi 2017- Report Final.pdf' },
+    ],
   },
   {
     year: '2016',
@@ -174,6 +182,9 @@ const communityEducationPrograms = [
     period: 'June–July 2016',
     institution: 'Jobhipat Residential School (Adivasi School), Gumla, Jharkhand',
     partnerOrganizations: 'Department of Welfare, Government of Jharkhand',
+    documents: [
+      { title: 'Road Teachers Programme Report', year: '2016', file: '/documents/Road Teachers 2016 FINAL.pdf' },
+    ],
   },
 ]
 
@@ -293,8 +304,9 @@ const collaborators = ['Jean Drèze', 'Reetika Khera', 'Apurva Bamezai', 'Aakash
 
 export default function CommunityPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-background" style={{ ['--page-accent' as keyof CSSProperties]: 'var(--color-research-charcoal)' } as CSSProperties}>
       <SiteNav />
+      <div className="h-[3px] w-full bg-page-accent" aria-hidden="true" />
 
       <main className="flex-1">
         <div className="max-w-4xl mx-auto px-6 py-12 md:py-20">
@@ -441,6 +453,58 @@ export default function CommunityPage() {
                         <p className="text-sm md:text-base text-foreground/75">
                           {program.additionalRole}
                         </p>
+                      </div>
+                    )}
+
+                    {program.documents && (
+                      <div className="border-t border-border/50 pt-6">
+                        <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-4">
+                          Documentation
+                        </p>
+                        <ul className="space-y-5">
+                          {program.documents.map((doc) => (
+                            <li key={doc.file} className="flex items-start gap-3">
+                              <svg
+                                className="mt-0.5 size-[18px] flex-shrink-0 text-muted-foreground"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth={1.5}
+                                aria-hidden="true"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M14 3v4a1 1 0 001 1h4M14 3H7a1 1 0 00-1 1v16a1 1 0 001 1h10a1 1 0 001-1V8M14 3l4 5"
+                                />
+                              </svg>
+                              <div className="min-w-0">
+                                <p className="text-sm md:text-base text-foreground/85">
+                                  {doc.title}{' '}
+                                  <span className="text-muted-foreground">(PDF)</span>
+                                </p>
+                                <p className="type-meta mt-1">Year: {doc.year}</p>
+                                <div className="mt-2.5 flex flex-wrap items-center gap-x-6 gap-y-2">
+                                  <a
+                                    href={encodeURI(doc.file)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="link-rule text-sm"
+                                  >
+                                    View Report
+                                  </a>
+                                  <a
+                                    href={encodeURI(doc.file)}
+                                    download
+                                    className="link-rule text-sm"
+                                  >
+                                    Download PDF
+                                  </a>
+                                </div>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     )}
                   </AccordionContent>

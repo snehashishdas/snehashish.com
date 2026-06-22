@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react'
+
 export function ContactSection() {
   const items = [
     {
@@ -38,9 +40,15 @@ export function ContactSection() {
   ]
 
   return (
-    <section className="border-t border-border bg-background py-24 md:py-32">
+    <section
+      className="border-t border-border bg-background py-24 md:py-32"
+      style={{ ['--page-accent' as keyof CSSProperties]: 'var(--color-accent)' } as CSSProperties}
+    >
       <div className="mx-auto w-full max-w-4xl px-6 md:px-12">
-        <h2 className="type-section-title mb-14 md:mb-16">Get in Touch</h2>
+        <div className="mb-14 md:mb-16">
+          <p className="type-eyebrow mb-4">Contact</p>
+          <h2 className="type-section-title">Get in Touch</h2>
+        </div>
 
         <div className="flex flex-col gap-10 md:flex-row md:flex-wrap md:gap-x-16 md:gap-y-10">
           {items.map((item) => (

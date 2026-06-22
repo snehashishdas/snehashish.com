@@ -44,51 +44,93 @@ const journey = [
   },
 ]
 
+const BIO =
+  'Snehashish Das is a doctoral candidate in Sociology at Jawaharlal Nehru University (JNU), New Delhi, India. Their work explores anti-caste movements, folk histories, folk cultures, religion, and subversive masculinities in Western Odisha, India. Alongside academic research, they write for public platforms and engage with anti-caste creative and literary practices. On a side note, Snehashish loves to explore, cook, and experiment with different cultural cuisines, which this website does not elaborate upon.'
+
 export default function Home() {
   const [researchExpanded, setResearchExpanded] = useState(false)
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero — portrait + dark biography panel */}
-      <section className="relative flex min-h-screen flex-col overflow-hidden md:flex-row">
-        {/* Portrait: top on mobile, left column on desktop. Single optimized asset. */}
-        <div className="relative h-80 w-full flex-shrink-0 bg-foreground/5 sm:h-96 md:h-auto md:min-h-screen md:w-5/12">
+      {/* ============================================================
+          HERO
+          Mobile: full-screen cover page (portrait + overlay).
+          Desktop: 50/50 portrait + biography title page.
+      ============================================================ */}
+
+      {/* --- Mobile cover page (book / catalogue cover) --- */}
+      <section className="relative h-[100svh] w-full overflow-hidden md:hidden">
+        <Image
+          src="/hero-portrait.jpg"
+          alt="Portrait of Snehashish Das"
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/25 to-foreground/5"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-x-0 bottom-0 p-7 pb-14">
+          <p className="type-eyebrow mb-3 !text-background/70">Sociologist · Writer · Researcher</p>
+          <h1 className="font-serif text-[clamp(2.75rem,12vw,3.75rem)] leading-[1.04] tracking-tight text-background">
+            Snehashish Das
+          </h1>
+        </div>
+        <div className="absolute bottom-6 right-7 flex flex-col items-center gap-1 text-background/55" aria-hidden="true">
+          <span className="text-[0.625rem] uppercase tracking-[0.2em]">Scroll</span>
+          <span className="h-8 w-px bg-background/40" />
+        </div>
+      </section>
+
+      {/* --- Mobile biography + navigation (below the cover) --- */}
+      <section className="bg-foreground px-7 py-16 text-background md:hidden">
+        <div className="space-y-9">
+          <div className="h-px w-16 bg-background/30" aria-hidden="true" />
+          <p className="text-[0.975rem] leading-[1.75] text-background/80">{BIO}</p>
+          <nav aria-label="Sections" className="flex flex-wrap gap-3">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="btn-hero">
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </section>
+
+      {/* --- Desktop 50/50 hero --- */}
+      <section className="relative hidden min-h-screen md:flex">
+        {/* Portrait — 50%, full height, subject preserved (center) */}
+        <div className="relative min-h-screen w-1/2 bg-foreground/5">
           <Image
             src="/hero-portrait.jpg"
             alt="Portrait of Snehashish Das"
             fill
             priority
-            quality={90}
-            sizes="(max-width: 768px) 100vw, 42vw"
-            className="object-contain object-center md:object-cover"
+            quality={92}
+            sizes="50vw"
+            className="object-cover object-center"
           />
         </div>
 
-        {/* Biography panel */}
-        <div className="flex w-full flex-col justify-center bg-foreground/95 px-6 py-16 text-background md:w-7/12 md:px-12 md:py-0 lg:px-16">
-          <div className="max-w-xl space-y-10">
-            <div>
-              <h1 className="mb-6 font-serif leading-[1.04] tracking-tight text-background text-[clamp(2.75rem,7vw,5.25rem)]">
+        {/* Biography title page — 50% */}
+        <div className="flex w-1/2 flex-col justify-center bg-foreground px-12 text-background lg:px-16 xl:px-20">
+          <div className="mx-auto w-full max-w-[34rem] space-y-10">
+            <div className="space-y-6">
+              <p className="type-eyebrow !text-background/60">Sociologist · Writer · Researcher</p>
+              <h1 className="font-serif text-[clamp(3rem,4.6vw,4.75rem)] leading-[1.02] tracking-tight text-background">
                 Snehashish Das
               </h1>
-              <p className="text-base font-light tracking-wide text-background/80 md:text-lg">
-                Sociologist · Writer · Researcher
-              </p>
+              <div className="h-px w-16 bg-background/30" aria-hidden="true" />
             </div>
 
-            <div className="space-y-6 text-sm leading-relaxed text-background/75 md:text-base">
-              <p>
-                Snehashish Das is a doctoral candidate in Sociology at Jawaharlal Nehru University (JNU), New Delhi, India. Their work explores anti-caste movements, folk histories, folk cultures, religion, and subversive masculinities in Western Odisha, India. Alongside academic research, they write for public platforms and engage with anti-caste creative and literary practices. On a side note, Snehashish loves to explore, cook, and experiment with different cultural cuisines, which this website does not elaborate upon.
-              </p>
-            </div>
+            <p className="measure text-base leading-[1.75] text-background/75">{BIO}</p>
 
-            <nav aria-label="Sections" className="flex flex-wrap gap-3 pt-2">
+            <nav aria-label="Sections" className="flex flex-wrap gap-3 pt-1">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="rounded-sm border border-background/40 px-4 py-2.5 text-sm font-medium tracking-wide text-background transition-all duration-200 hover:border-background hover:bg-background/10"
-                >
+                <Link key={link.href} href={link.href} className="btn-hero">
                   {link.label}
                 </Link>
               ))}
@@ -99,9 +141,9 @@ export default function Home() {
 
       {/*
         PhD Dissertation Details
-        CONTENT CORRECTION 2 — text content replaced only.
+        CONTENT CORRECTION — text content replaced only.
         Layout, typography, spacing, hierarchy, and expand/collapse structure
-        are intentionally preserved exactly as in the approved design.
+        are preserved exactly as in the approved design.
       */}
       <section className="py-24 md:py-32 bg-background border-t border-border">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-12">
@@ -117,7 +159,7 @@ export default function Home() {
 
               <div className="space-y-6 text-foreground/80 leading-relaxed">
                 <p>
-                  This doctoral project examines anti-caste movements in Western Odisha through fieldwork conducted among, primarily, Ganda (Scheduled Caste) community in Kurul village and Malgodampada urban-slum, Balangir district in 2024. It investigates how anti-caste movements function not merely as political formations but as pedagogical spaces through which ideas of emancipation, personhood, gender, and social transformation are historically produced and transmitted.
+                  This doctoral project examines anti-caste movements in Western Odisha through fieldwork conducted primarily among the Ganda (Scheduled Caste) community in Kurul village and the Malgodampada urban slum in the Balangir district in 2024. It investigates how anti-caste movements function not merely as political formations but as pedagogical spaces through which ideas of emancipation, personhood, gender, and social transformation are historically produced and transmitted.
                 </p>
 
                 {!researchExpanded && (
@@ -137,7 +179,7 @@ export default function Home() {
                           Becoming & Emancipation
                         </h4>
                         <p>
-                          This research develops arguments for a sociology of becoming by studying anti-caste movements as sites where emancipatory practices are produced, learned, transmitted, contested, and transformed across generations. The movement is approached as a pedagogical space, where subversion is thought and practised, that generates possibilities for both emancipation in general, and gender emancipation in particular.
+                          This research develops arguments for a sociology of becoming by studying anti-caste movements as sites where emancipatory practices are produced, learned, transmitted, contested, and transformed across generations. The movement is approached as a pedagogical space where subversion is thought and practised, generating possibilities for both emancipation in general and gender emancipation in particular.
                         </p>
                       </div>
 
@@ -146,7 +188,7 @@ export default function Home() {
                           Reconstructing Probable Pasts
                         </h4>
                         <p>
-                          The project develops rationale, and theoretical and methodological frameworks for reconstructing what are termed “probable pasts” through folk myths, ritual narratives, oral traditions, and performance practices. These narratives are situated within the historical ontology of communities’ ‘self’, and it examines how marginalized communities use ‘probable pasts’ to negotiate contemporary understandings of community-self, caste, and gender.
+                          The project develops a rationale and the theoretical and methodological frameworks for reconstructing what are termed “probable pasts” through folk myths, ritual narratives, oral traditions, and performance practices. These narratives are situated within the historical ontology of the communities’ ‘self’, and the project examines how marginalized communities use ‘probable pasts’ to negotiate contemporary understandings of community-self, caste, and gender.
                         </p>
                       </div>
 
@@ -155,7 +197,7 @@ export default function Home() {
                           Folk Culture, Performance & Gender
                         </h4>
                         <p>
-                          Drawing on folk songs, two theatrical performances, and a possession ritual, the research develops a grounded understanding of gender within anti-caste folk cultures. Particular attention is given to the emancipatory possibilities these cultural forms generate, as well as the contradictions, paradoxes and limits they contain.
+                          Drawing on folk songs, two theatrical performances, and a possession ritual, the research develops a grounded understanding of gender within anti-caste folk cultures. Particular attention is given to the emancipatory possibilities these cultural forms generate, as well as the contradictions, paradoxes, and limits they contain.
                         </p>
                       </div>
 
@@ -164,7 +206,7 @@ export default function Home() {
                           Critique of Gender & Masculinity Studies
                         </h4>
                         <p>
-                          This project critiques that even certain idiographic studies risk making positive laws in their study of caste and gender, and in return creating racialised subjects. This research understands the limits of gender and masculinities studies, and discourses, that generalizes masculinity or treat it as ahistorical or historically fixed. In contrast, the research conceptualises studying gender emancipation through anti-caste movements, where it understands gender and masculinities as historically evolving categories.
+                          This project argues that even certain idiographic studies risk making positive laws in their study of caste and gender, and in turn creating racialised subjects. This research understands the limits of gender and masculinities studies and discourses that generalize masculinity or treat it as ahistorical or historically fixed. In contrast, the research conceptualizes the study of gender emancipation through anti-caste movements, framing gender and masculinities as historically evolving categories.
                         </p>
                       </div>
                     </div>
