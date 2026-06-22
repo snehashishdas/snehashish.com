@@ -649,7 +649,7 @@ export default function CommunityPage() {
 
           {/* SECTION 3: Advocacy, Training, Workshops & Conventions — unified archive */}
           <section className="mb-28 md:mb-40 border-t border-border pt-28 md:pt-40">
-            <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-12 tracking-wide">
+            <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
               Advocacy, Training, Workshops & Conventions
             </h2>
 
@@ -667,36 +667,28 @@ export default function CommunityPage() {
                   </div>
 
                   {/* Per-year accordion — each year is its own Accordion instance */}
-                  <Accordion type="single" collapsible className="space-y-0.5">
+                  <Accordion type="single" collapsible className="space-y-6">
                     {entriesByYear[year].map((entry) => (
                       <AccordionItem
                         key={entry.id}
                         value={entry.id}
-                        className="border border-border/40 rounded-sm px-5 md:px-6 py-3.5 md:py-4 transition-colors hover:bg-muted/30"
+                        className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8"
                       >
-                        <AccordionTrigger className="py-0 hover:no-underline group [&>svg]:text-muted-foreground [&>svg]:shrink-0 [&>svg]:ml-3 [&>svg]:opacity-50">
-                          <div className="text-left flex-1 min-w-0">
-                            <h3 className="font-serif text-base text-foreground group-hover:text-foreground/80 transition-colors leading-snug">
+                        <AccordionTrigger className="py-0 hover:no-underline group">
+                          <div className="text-left">
+                            <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-1">
+                              {entry.role}
+                            </p>
+                            <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
                               {entry.title}
                             </h3>
-                            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0 mt-1">
-                              <span
-                                className="type-eyebrow"
-                                style={{ fontSize: '0.65rem', opacity: 0.75 }}
-                              >
-                                {entry.role}
-                              </span>
-                              <span className="text-border text-xs" aria-hidden="true">·</span>
-                              <span className="type-meta" style={{ fontSize: '0.65rem' }}>
-                                {entry.meta}
-                              </span>
-                            </div>
+                            <p className="text-sm text-muted-foreground mt-1">
+                              {entry.meta}
+                            </p>
                           </div>
                         </AccordionTrigger>
-                        <AccordionContent className="pt-3 pb-1">
-                          <div className="border-t border-border/30 pt-3">
-                            {entry.details}
-                          </div>
+                        <AccordionContent className="pt-8 pb-0">
+                          {entry.details}
                         </AccordionContent>
                       </AccordionItem>
                     ))}
