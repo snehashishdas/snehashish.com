@@ -6,8 +6,8 @@ import Image from 'next/image'
 import { ContactSection } from '@/components/contact-section'
 
 const navLinks = [
-  { href: '/research', label: 'Research' },
   { href: '/publications', label: 'Publications' },
+  { href: '/research', label: 'Research' },
   { href: '/podcasts', label: 'Podcasts' },
   { href: '/community', label: 'Community' },
 ]
@@ -73,15 +73,34 @@ export default function Home() {
           className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/25 to-foreground/5"
           aria-hidden="true"
         />
-        <div className="absolute inset-x-0 bottom-0 p-7 pb-14">
-          <p className="type-eyebrow mb-3 !text-background/70">Sociologist · Writer · Researcher</p>
-          <h1 className="font-serif text-[clamp(2.75rem,12vw,3.75rem)] leading-[1.04] tracking-tight text-background">
-            Snehashish Das
-          </h1>
-        </div>
-        <div className="absolute bottom-6 right-7 flex flex-col items-center gap-1 text-background/55" aria-hidden="true">
-          <span className="text-[0.625rem] uppercase tracking-[0.2em]">Scroll</span>
-          <span className="h-8 w-px bg-background/40" />
+        <style>{`
+          @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+          }
+          .hero-role-line {
+            animation: heroFadeUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+          }
+          .hero-title-block {
+            animation: heroFadeUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+          }
+          .hero-scroll-indicator {
+            animation: heroFadeUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.62s both;
+          }
+        `}</style>
+        <div className="absolute inset-x-0 bottom-0 p-7 pb-10 flex flex-col items-start gap-4">
+          <div className="hero-role-line">
+            <p className="type-eyebrow !text-background/70">Sociologist · Writer · Researcher</p>
+          </div>
+          <div className="hero-title-block">
+            <h1 className="font-serif text-[clamp(2.75rem,12vw,3.75rem)] leading-[1.04] tracking-tight text-background">
+              Snehashish Das
+            </h1>
+          </div>
+          <div className="hero-scroll-indicator flex flex-col items-start gap-1 text-background/55 pt-1" aria-hidden="true">
+            <span className="text-[0.625rem] uppercase tracking-[0.2em]">Scroll</span>
+            <span className="h-7 w-px bg-background/40" />
+          </div>
         </div>
       </section>
 

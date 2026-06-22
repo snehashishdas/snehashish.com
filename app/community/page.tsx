@@ -513,116 +513,174 @@ export default function CommunityPage() {
             </Accordion>
           </section>
 
-          {/* SECTION 3: Workshops, Training & Conventions */}
+          {/* SECTION 3 & 4 MERGED: Advocacy, Training, Workshops & Conventions */}
           <section className="mb-28 md:mb-40 border-t border-border pt-28 md:pt-40">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
-              Workshops, Training & Conventions
+              Advocacy, Training, Workshops & Conventions
             </h2>
 
             <Accordion type="single" collapsible className="space-y-6">
-              {workshops.map((workshop, idx) => (
-                <AccordionItem
-                  key={idx}
-                  value={`workshop-${idx}`}
-                  className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
-                  style={{ borderLeftColor: '#8B7355' }}
-                >
-                  <AccordionTrigger className="py-0 hover:no-underline group">
-                    <div className="text-left">
-                      <p className="text-xs font-medium mb-2" style={{ color: '#8B7355' }}>
-                        {workshop.role}
-                      </p>
-                      <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
-                        {workshop.title}
-                      </h3>
-                    </div>
-                  </AccordionTrigger>
 
-                  <AccordionContent className="pt-6 pb-0">
-                    <p className="text-sm md:text-base text-foreground/75">
-                      {workshop.details}
+              {/* 2016 entries */}
+              <div className="flex items-center gap-4 mb-2 mt-2">
+                <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">2016</span>
+                <span className="flex-1 h-px bg-border/40" aria-hidden="true" />
+              </div>
+
+              <AccordionItem
+                value="internship-gandhi"
+                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
+                style={{ borderLeftColor: '#2D5016' }}
+              >
+                <AccordionTrigger className="py-0 hover:no-underline group">
+                  <div className="text-left">
+                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
+                      Gandhi Youth Camp, Puri, Odisha
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      March 2015 (5-day residential programme)
                     </p>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-8 pb-0 space-y-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Focus</p>
+                    <p className="text-sm md:text-base text-foreground/75">Grassroots development training through fieldwork</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Organizers</p>
+                    <p className="text-sm md:text-base text-foreground/75">Gandhi Bichar Abhiyan & Gandhi Peace Centre</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Venue</p>
+                    <p className="text-sm md:text-base text-foreground/75">Gopabandhu Daridra Narayan Seva Sangh, Sakhigopal</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="internship-ashirvad"
+                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
+                style={{ borderLeftColor: '#2D5016' }}
+              >
+                <AccordionTrigger className="py-0 hover:no-underline group">
+                  <div className="text-left">
+                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
+                      Ashirvad NGO, East Sikkim
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-1">May 2016 (3 days)</p>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-8 pb-0 space-y-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Focus</p>
+                    <p className="text-sm md:text-base text-foreground/75">Socioeconomic-cultural study of Pakyong district communities</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Role</p>
+                    <p className="text-sm md:text-base text-foreground/75">Conducted field research on livelihoods and local traditions</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="workshop-rtf"
+                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
+                style={{ borderLeftColor: '#2D5016' }}
+              >
+                <AccordionTrigger className="py-0 hover:no-underline group">
+                  <div className="text-left">
+                    <p className="text-xs font-medium mb-2" style={{ color: '#2D5016' }}>Participant & Volunteer</p>
+                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
+                      6th National Convention of Right to Food Campaign
+                    </h3>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-6 pb-0">
+                  <p className="text-sm md:text-base text-foreground/75">Held in Ranchi (23rd–25th September 2016)</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* 2017 entries */}
+              <div className="flex items-center gap-4 mb-2 mt-6">
+                <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">2017</span>
+                <span className="flex-1 h-px bg-border/40" aria-hidden="true" />
+              </div>
+
+              <AccordionItem
+                value="workshop-gender-sexuality"
+                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
+                style={{ borderLeftColor: '#2D5016' }}
+              >
+                <AccordionTrigger className="py-0 hover:no-underline group">
+                  <div className="text-left">
+                    <p className="text-xs font-medium mb-2" style={{ color: '#2D5016' }}>Participant</p>
+                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
+                      Workshop on "Gender and Sexuality, Sexual Health, Sexual Violence and Related Laws"
+                    </h3>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-6 pb-0">
+                  <p className="text-sm md:text-base text-foreground/75">Conducted by the Foundation for Social Transformation, Guwahati (18th–19th March 2017)</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="workshop-himalayan"
+                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
+                style={{ borderLeftColor: '#2D5016' }}
+              >
+                <AccordionTrigger className="py-0 hover:no-underline group">
+                  <div className="text-left">
+                    <p className="text-xs font-medium mb-2" style={{ color: '#2D5016' }}>Rapporteur</p>
+                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
+                      Eastern Himalayan Naturenomics Forum
+                    </h3>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-6 pb-0">
+                  <p className="text-sm md:text-base text-foreground/75">Organized by the Balipara Foundation, Guwahati, Assam (2nd–3rd November 2017)</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* 2016 (Dec) — NAPM */}
+              <div className="flex items-center gap-4 mb-2 mt-6">
+                <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">2016</span>
+                <span className="flex-1 h-px bg-border/40" aria-hidden="true" />
+              </div>
+
+              <AccordionItem
+                value="internship-napm"
+                className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
+                style={{ borderLeftColor: '#2D5016' }}
+              >
+                <AccordionTrigger className="py-0 hover:no-underline group">
+                  <div className="text-left">
+                    <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
+                      National Alliance of People's Movements (NAPM), New Delhi
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-1">December 2016</p>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-8 pb-0 space-y-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Focus</p>
+                    <p className="text-sm md:text-base text-foreground/75">Housing rights and anti-eviction advocacy</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">Role</p>
+                    <p className="text-sm md:text-base text-foreground/75">Supported the Kathputli Colony resistance movement against forced demolition</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
             </Accordion>
           </section>
 
-          {/* SECTION 4: Internships */}
-          <section className="mb-28 md:mb-40 border-t border-border pt-28 md:pt-40">
-            <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
-              Internships
-            </h2>
-
-            <Accordion type="single" collapsible className="space-y-6">
-              {internships.map((internship, idx) => (
-                <AccordionItem
-                  key={idx}
-                  value={`internship-${idx}`}
-                  className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 border-l-4"
-                  style={{ borderLeftColor: '#2D5016' }}
-                >
-                  <AccordionTrigger className="py-0 hover:no-underline group">
-                    <div className="text-left">
-                      <h3 className="font-serif text-lg md:text-xl text-foreground group-hover:text-foreground/80 transition-colors">
-                        {internship.organization}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {internship.date}
-                      </p>
-                    </div>
-                  </AccordionTrigger>
-
-                  <AccordionContent className="pt-8 pb-0 space-y-4">
-                    <div>
-                      <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">
-                        Focus
-                      </p>
-                      <p className="text-sm md:text-base text-foreground/75">
-                        {internship.focus}
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">
-                        {internship.role ? 'Role' : 'Activity'}
-                      </p>
-                      <p className="text-sm md:text-base text-foreground/75">
-                        {internship.role}
-                      </p>
-                    </div>
-
-                    {internship.organizers && (
-                      <div>
-                        <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">
-                          Organizers
-                        </p>
-                        <p className="text-sm md:text-base text-foreground/75">
-                          {internship.organizers}
-                        </p>
-                      </div>
-                    )}
-
-                    {internship.venue && (
-                      <div>
-                        <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-2">
-                          Venue
-                        </p>
-                        <p className="text-sm md:text-base text-foreground/75">
-                          {internship.venue}
-                        </p>
-                      </div>
-                    )}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </section>
-
-          {/* SECTION 5: Institutions and Leadership */}
+          {/* SECTION 5: Other Entries From My Diary (idk why) */}
           <section className="border-t border-border pt-28 md:pt-40">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
-              Institutions and Leadership
+              Other Entries From My Diary (idk why)
             </h2>
 
             <Accordion type="single" collapsible className="space-y-6">
