@@ -1,6 +1,5 @@
-import { SiteHeader } from "@/components/site-header"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import type { CSSProperties } from 'react'
+import { SiteNav } from "@/components/site-nav"
 import { ContactSection } from "@/components/contact-section"
 import {
   Accordion,
@@ -10,8 +9,9 @@ import {
 } from "@/components/ui/accordion"
 
 export const metadata = {
-  title: "Publications | Snehashish Das",
+  title: "Publications",
   description: "Journal publications, creative works, and public scholarship by Snehashish Das.",
+  alternates: { canonical: "/publications" },
 }
 
 export default function PublicationsPage() {
@@ -155,11 +155,11 @@ export default function PublicationsPage() {
     .sort((a, b) => b - a)
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <SiteHeader />
-      <Header />
+    <div className="min-h-screen flex flex-col" style={{ ['--page-accent' as keyof CSSProperties]: 'var(--color-research-indigo)' } as CSSProperties}>
+      <SiteNav />
+      <div className="h-[3px] w-full bg-page-accent" aria-hidden="true" />
 
-      <main className="flex-1 mt-14 md:mt-0">
+      <main className="flex-1">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-12">
           {/* Page Title */}
           <header className="py-20 md:py-28 border-b border-border">
@@ -228,7 +228,7 @@ export default function PublicationsPage() {
                             href={article.doi}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium text-foreground bg-foreground/5 hover:bg-foreground/10 border border-border/40 rounded-sm transition-colors"
+                            className="chip-link"
                           >
                             DOI
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -263,7 +263,7 @@ export default function PublicationsPage() {
                         href={review.doi}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium text-foreground bg-foreground/5 hover:bg-foreground/10 border border-border/40 rounded-sm transition-colors"
+                        className="chip-link"
                       >
                         DOI
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -316,7 +316,7 @@ export default function PublicationsPage() {
                     href={work.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium text-foreground bg-foreground/5 hover:bg-foreground/10 border border-border/40 rounded-sm transition-colors"
+                    className="chip-link"
                   >
                     View Publication
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -380,7 +380,7 @@ export default function PublicationsPage() {
                             href={article.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-foreground bg-foreground/5 hover:bg-foreground/10 border border-border/40 rounded-sm transition-colors"
+                            className="chip-link"
                           >
                             Read Article
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -400,8 +400,6 @@ export default function PublicationsPage() {
           <ContactSection />
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }

@@ -1,6 +1,5 @@
-import { SiteHeader } from "@/components/site-header"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import type { CSSProperties } from 'react'
+import { SiteNav } from "@/components/site-nav"
 import { ContactSection } from "@/components/contact-section"
 import Image from "next/image"
 import Link from "next/link"
@@ -12,8 +11,9 @@ import {
 } from "@/components/ui/accordion"
 
 export const metadata = {
-  title: "Podcasts & Conversations | Snehashish Das",
+  title: "Podcasts & Conversations",
   description: "Curated podcast conversations exploring themes of caste, queerness, social movements, and anti-caste thought.",
+  alternates: { canonical: "/podcasts" },
 }
 
 const conversations = [
@@ -47,11 +47,11 @@ const conversations = [
 
 export default function PodcastsPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <SiteHeader />
-      <Header />
+    <div className="min-h-screen flex flex-col bg-background" style={{ ['--page-accent' as keyof CSSProperties]: 'var(--color-research-forest)' } as CSSProperties}>
+      <SiteNav />
+      <div className="h-[3px] w-full bg-page-accent" aria-hidden="true" />
 
-      <main className="flex-1 mt-14 md:mt-0">
+      <main className="flex-1">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-12">
           {/* Page Title */}
           <div className="py-28 md:py-40">
@@ -119,7 +119,7 @@ export default function PodcastsPage() {
                           href={conversation.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-sm font-medium text-foreground border-b border-transparent hover:border-foreground/40 transition-colors pb-1"
+                          className="link-rule text-sm"
                         >
                           Listen Now
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -164,8 +164,6 @@ export default function PodcastsPage() {
           <ContactSection />
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }
