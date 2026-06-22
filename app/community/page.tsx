@@ -408,7 +408,7 @@ export default function CommunityPage() {
       year: 2016,
       id: 'internship-ashirvad',
       title: 'Ashirvad NGO, East Sikkim',
-      role: 'Field Researcher',
+      role: 'Experiential Learning',
       meta: 'May 2016 (3 days) · East Sikkim',
       details: (
         <div className="space-y-3">
@@ -418,7 +418,7 @@ export default function CommunityPage() {
           </div>
           <div>
             <p className="type-meta mb-1">Role</p>
-            <p className="text-sm md:text-base text-foreground/75">Conducted field research on livelihoods and local traditions</p>
+            <p className="text-sm md:text-base text-foreground/75">Learn about livelihoods and local traditions</p>
           </div>
         </div>
       ),
