@@ -666,35 +666,35 @@ export default function CommunityPage() {
                     <span className="flex-1 h-px bg-border/30" aria-hidden="true" />
                   </div>
 
-                  {/* Per-year accordion — entries are valid AccordionItem children */}
-                  <Accordion type="single" collapsible className="space-y-[2px]">
+                  {/* Per-year accordion — each year is its own Accordion instance */}
+                  <Accordion type="single" collapsible className="space-y-0.5">
                     {entriesByYear[year].map((entry) => (
                       <AccordionItem
                         key={entry.id}
                         value={entry.id}
-                        className="border border-border/35 rounded-[2px] px-5 md:px-6 py-3.5 md:py-4 bg-card/20 hover:bg-card/40 transition-colors"
+                        className="border border-border/40 rounded-sm px-5 md:px-6 py-3.5 md:py-4 transition-colors hover:bg-muted/30"
                       >
-                        <AccordionTrigger className="py-0 hover:no-underline group [&>svg]:text-muted-foreground/50 [&>svg]:shrink-0 [&>svg]:ml-3">
+                        <AccordionTrigger className="py-0 hover:no-underline group [&>svg]:text-muted-foreground [&>svg]:shrink-0 [&>svg]:ml-3 [&>svg]:opacity-50">
                           <div className="text-left flex-1 min-w-0">
-                            <h3 className="font-serif text-[0.975rem] md:text-base text-foreground group-hover:text-foreground/80 transition-colors leading-snug">
+                            <h3 className="font-serif text-base text-foreground group-hover:text-foreground/80 transition-colors leading-snug">
                               {entry.title}
                             </h3>
                             <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0 mt-1">
                               <span
-                                className="font-sans text-[0.6rem] font-semibold tracking-[0.18em] uppercase"
-                                style={{ color: 'var(--color-research-charcoal)', opacity: 0.7 }}
+                                className="type-eyebrow"
+                                style={{ fontSize: '0.65rem', opacity: 0.75 }}
                               >
                                 {entry.role}
                               </span>
-                              <span className="text-border text-[0.6rem]" aria-hidden="true">·</span>
-                              <span className="font-sans text-[0.6rem] tracking-[0.14em] uppercase text-muted-foreground/55 tabular-nums">
+                              <span className="text-border text-xs" aria-hidden="true">·</span>
+                              <span className="type-meta" style={{ fontSize: '0.65rem' }}>
                                 {entry.meta}
                               </span>
                             </div>
                           </div>
                         </AccordionTrigger>
-                        <AccordionContent className="pt-3 pb-0.5">
-                          <div className="border-t border-border/25 pt-3">
+                        <AccordionContent className="pt-3 pb-1">
+                          <div className="border-t border-border/30 pt-3">
                             {entry.details}
                           </div>
                         </AccordionContent>
