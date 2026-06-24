@@ -14,28 +14,6 @@ export const metadata: Metadata = {
   description:
     'Conference presentations, teaching, fieldwork, and professional activities of Snehashish Das across caste, anti-caste movements, religion, gender, and sociological theory.',
   alternates: { canonical: '/research' },
-  openGraph: {
-    title: 'Research | Snehashish Das',
-    description:
-      'Conference presentations, teaching, fieldwork, and professional activities of Snehashish Das across caste, anti-caste movements, religion, gender, and sociological theory.',
-    url: 'https://snehashish.com/research',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Snehashish Das — Sociologist, Writer, Researcher',
-        type: 'image/png',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Research | Snehashish Das',
-    description:
-      'Conference presentations, teaching, fieldwork, and professional activities of Snehashish Das across caste, anti-caste movements, religion, gender, and sociological theory.',
-    images: ['/og-image.png'],
-  },
 }
 
 const researchThemes = [
