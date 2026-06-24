@@ -3,43 +3,114 @@ import { Analytics } from '@vercel/analytics/next'
 import { SiteFooter } from '@/components/site-footer'
 import './globals.css'
 
-const siteUrl = 'https://snehashishdas.vercel.app'
+const siteUrl = 'https://snehashish.com'
+const siteName = 'Snehashish Das'
+const siteDescription =
+  'Sociologist, Writer, Researcher, and PhD Scholar at Jawaharlal Nehru University. Research interests include caste, social movements, anti-caste thought, African American studies, Buddhism, recognition, redistribution, and social theory.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+
   title: {
-    default: 'Snehashish Das',
-    template: '%s | Snehashish Das',
+    default: siteName,
+    template: `%s | ${siteName}`,
   },
-  description:
-    'Academic portfolio of Snehashish Das — Sociologist, Writer, and Researcher working on anti-caste movements, folk cultures, religion, and gender in Western Odisha, India.',
+  description: siteDescription,
+
+  // No generator tag — removes all template/V0 fingerprints
   generator: undefined,
+
+  keywords: [
+    'Snehashish Das',
+    'Sociologist',
+    'Writer',
+    'Researcher',
+    'PhD Scholar',
+    'Jawaharlal Nehru University',
+    'JNU',
+    'Anti-Caste',
+    'Caste Studies',
+    'Social Movements',
+    'African American Studies',
+    'Buddhism',
+    'Recognition',
+    'Redistribution',
+    'Social Theory',
+    'Ambedkar',
+    'Western Odisha',
+    'Folk Culture',
+    'Gender Studies',
+  ],
+
+  authors: [{ name: 'Snehashish Das', url: siteUrl }],
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+
   alternates: {
     canonical: '/',
   },
+
   openGraph: {
-    type: 'profile',
-    siteName: 'Snehashish Das',
-    title: 'Snehashish Das',
+    type: 'website',
+    siteName,
+    title: siteName,
     description:
-      'Sociologist, Writer, and Researcher working on anti-caste movements, folk cultures, religion, and gender in Western Odisha, India.',
+      'Sociologist, Writer, Researcher, and PhD Scholar at Jawaharlal Nehru University.',
     url: siteUrl,
     locale: 'en_US',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Snehashish Das — Sociologist, Writer, Researcher',
+        type: 'image/png',
+      },
+    ],
   },
+
   twitter: {
-    card: 'summary',
-    title: 'Snehashish Das',
+    card: 'summary_large_image',
+    title: siteName,
     description:
-      'Sociologist, Writer, and Researcher working on anti-caste movements, folk cultures, religion, and gender in Western Odisha, India.',
+      'Sociologist, Writer, Researcher, and PhD Scholar at Jawaharlal Nehru University.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Snehashish Das — Sociologist, Writer, Researcher',
+      },
+    ],
   },
+
   icons: {
     icon: [
-      { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
-      { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-192x192.png', type: 'image/png', sizes: '192x192' },
       { url: '/icon.svg', type: 'image/svg+xml' },
     ],
-    apple: '/apple-icon.png',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { rel: 'mask-icon', url: '/icon.svg', color: '#c9a84c' },
+    ],
   },
+
+  manifest: '/site.webmanifest',
 }
 
 const personJsonLd = {
@@ -47,18 +118,27 @@ const personJsonLd = {
   '@type': 'Person',
   name: 'Snehashish Das',
   url: siteUrl,
-  jobTitle: 'Doctoral Candidate in Sociology',
+  jobTitle: ['Sociologist', 'Writer', 'Researcher', 'PhD Scholar'],
   affiliation: {
     '@type': 'CollegeOrUniversity',
     name: 'Jawaharlal Nehru University',
+    url: 'https://www.jnu.ac.in',
   },
+  description: siteDescription,
   knowsAbout: [
+    'Caste',
     'Anti-Caste Movements',
+    'Social Movements',
+    'African American Studies',
+    'Buddhism',
+    'Recognition',
+    'Redistribution',
+    'Social Theory',
     'Cultural Sociology',
     'Gender Studies',
     'Folk Culture',
-    'Religion Studies',
     'Historical Methods',
+    'Ambedkarian Thought',
   ],
   identifier: {
     '@type': 'PropertyValue',
@@ -71,6 +151,18 @@ const personJsonLd = {
   ],
 }
 
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteName,
+  url: siteUrl,
+  description: siteDescription,
+  author: {
+    '@type': 'Person',
+    name: 'Snehashish Das',
+  },
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -78,12 +170,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-background">
+      <head>
+        <link rel="canonical" href={siteUrl} />
+        <meta name="theme-color" content="#0f1117" />
+      </head>
       <body className="min-h-screen font-sans antialiased">
         {children}
         <SiteFooter />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
