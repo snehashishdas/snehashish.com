@@ -8,8 +8,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    // Image optimization re-enabled. The hero is now a local asset; remote
-    // podcast artwork is served from the Vercel Blob host below.
+    // Podcast artwork is served from Vercel Blob storage
     remotePatterns: [
       {
         protocol: 'https',
