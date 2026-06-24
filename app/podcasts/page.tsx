@@ -14,26 +14,6 @@ export const metadata = {
   title: "Podcasts & Conversations",
   description: "Curated podcast conversations exploring themes of caste, queerness, social movements, and anti-caste thought.",
   alternates: { canonical: "/podcasts" },
-  openGraph: {
-    title: "Podcasts & Conversations | Snehashish Das",
-    description: "Curated podcast conversations exploring themes of caste, queerness, social movements, and anti-caste thought.",
-    url: "https://snehashish.com/podcasts",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Snehashish Das — Sociologist, Writer, Researcher",
-        type: "image/png",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Podcasts & Conversations | Snehashish Das",
-    description: "Curated podcast conversations exploring themes of caste, queerness, social movements, and anti-caste thought.",
-    images: ["/og-image.png"],
-  },
 }
 
 const conversations = [
