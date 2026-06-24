@@ -12,6 +12,26 @@ export const metadata = {
   title: "Community",
   description: "Community education, panel discussions, internships, workshops, and institutional initiatives by Snehashish Das",
   alternates: { canonical: "/community" },
+  openGraph: {
+    title: "Community | Snehashish Das",
+    description: "Community education, panel discussions, internships, workshops, and institutional initiatives by Snehashish Das",
+    url: "https://snehashish.com/community",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Snehashish Das — Sociologist, Writer, Researcher",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Community | Snehashish Das",
+    description: "Community education, panel discussions, internships, workshops, and institutional initiatives by Snehashish Das",
+    images: ["/og-image.png"],
+  },
 }
 
 // Theme grouping for panel discussions

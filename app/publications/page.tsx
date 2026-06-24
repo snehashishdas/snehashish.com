@@ -12,6 +12,26 @@ export const metadata = {
   title: "Publications",
   description: "Journal publications, creative works, and public scholarship by Snehashish Das.",
   alternates: { canonical: "/publications" },
+  openGraph: {
+    title: "Publications | Snehashish Das",
+    description: "Journal publications, creative works, and public scholarship by Snehashish Das.",
+    url: "https://snehashish.com/publications",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Snehashish Das — Sociologist, Writer, Researcher",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Publications | Snehashish Das",
+    description: "Journal publications, creative works, and public scholarship by Snehashish Das.",
+    images: ["/og-image.png"],
+  },
 }
 
 export default function PublicationsPage() {
