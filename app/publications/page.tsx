@@ -27,6 +27,12 @@ export default function PublicationsPage() {
       doi: "https://doi.org/10.26812/caste.v2i1.265",
       abstract: "Anti-caste traditions in India work to understand and examine the idea of personhood which the majority in India is deprived of by virtue of being born in the lower rungs of the caste hierarchy. This paper examines the historical continuity in Brahminism and the rupture Jotiba Phule presents to it through his art and activism which serves to disturb the regular flow of singular continuity of what is perceived as history and historiography. Jotiba's quest is for finding the essence / personhood of, what Butler calls, a 'precarious subject' and recognizing that precarious subject – the Shudra, as a subject of history. But the personhood of this precarious subject is never a complete personhood. Therefore, Jotiba attempts to unveil the path towards achieving complete personhood which is embedded in reaffirming the lost or concealed truth – by discontinuing the historical flow of the social structure of caste and establishing a new subject rising out of crisis in social structure in history. I have chosen two works from Jotiba's works as new methodological tools for history writing and historical criticism, and made hermeneutical and phenomenological readings of both. The works are his poem Kulambin (a peasant woman), and the Satyashodhak (truth-seeker) marriage as the public performance of protest, as they are both the essential and the mundane to his life, which exemplifies the truth Jotiba followed and established an organization, Satyashodhak Samaj (Society of Truth Seekers), as a testament to it.",
     },
+    {
+      title: "CAST(E)ING QUEERNESS",
+      author: "Snehashish Das",
+      abstract: "This paper examines the relationship between caste and queerness in India, arguing that caste is not merely an intersecting identity but a constitutive force that shapes queer lives, identities, and political possibilities. Drawing on the writings of Bahujan, queer and trans scholars and activists, it explores how caste and heteropatriarchy operate through institutions such as family, marriage, and the state to regulate gender and sexuality. The paper demonstrates how caste invisibilises queer subjects, structures access to dignity, labour, and citizenship, and reinforces compulsory heterosexuality. It further interrogates caste privilege within queer movements, highlighting the persistence of ‘upper-caste’ dominance, homonormativity, and the myth of castelessness. By centering the experiences of Bahujan queer persons, the paper argues that queer politics cannot be separated from anti-caste struggle. It concludes that meaningful queer liberation requires an explicit commitment to anti-caste politics, solidarity, and social justice.",
+      link: "https://ijaar.co.in/wp-content/uploads/2026/06/080132.pdf",
+    },
   ]
 
   const bookReviews = [
@@ -95,7 +101,7 @@ export default function PublicationsPage() {
       {
         title: "Dhondiba's Challenge: Restaging Gulamgiri",
         publication: "Proseterity",
-        link: "https://www.proseterity.com/dhondiba-s-challenge",
+        link: "https://www.proseterity.com/dhondibas-challenge/",
       },
     ],
     2022: [
@@ -126,7 +132,7 @@ export default function PublicationsPage() {
       {
         title: "A Universal Mother and the Secular Others",
         publication: "Maktoob",
-        link: "#",
+        link: "https://maktoobmedia.com/public/post?id=17892&slug=opinion-2019-10-16-a-universal-mother-and-the-secular-others",
       },
     ],
     2018: [
@@ -193,17 +199,21 @@ export default function PublicationsPage() {
                             {article.title}
                           </h4>
                           <p className="text-sm text-muted-foreground">
-                            {article.author} · {article.journal}, {article.volume}({article.issue}), {article.year}
+                            {article.journal
+                              ? `${article.author} · ${article.journal}, ${article.volume}(${article.issue}), ${article.year}`
+                              : article.author}
                           </p>
                         </div>
                       </AccordionTrigger>
 
                       <AccordionContent className="pt-8 pb-0 space-y-6">
                         <div>
-                          <p className="text-sm md:text-base text-foreground/75 leading-relaxed mb-6">
-                            <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">Citation:</span>{" "}
-                            {article.author}. "{article.title}." <em>{article.journal}</em> {article.volume}, no. {article.issue} ({article.year}): {article.pages}.
-                          </p>
+                          {article.journal && (
+                            <p className="text-sm md:text-base text-foreground/75 leading-relaxed mb-6">
+                              <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">Citation:</span>{" "}
+                              {article.author}. "{article.title}." <em>{article.journal}</em> {article.volume}, no. {article.issue} ({article.year}): {article.pages}.
+                            </p>
+                          )}
 
                           {/* Abstract Accordion */}
                           <Accordion type="single" collapsible>
@@ -225,12 +235,12 @@ export default function PublicationsPage() {
 
                         <div className="flex gap-3 pt-2">
                           <a
-                            href={article.doi}
+                            href={article.doi ?? article.link}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="chip-link"
                           >
-                            DOI
+                            {article.doi ? "DOI" : "View Publication"}
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>

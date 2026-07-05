@@ -172,13 +172,16 @@ export default function Home() {
 
           <div className="space-y-8">
             <div>
+              <p className="text-sm font-medium text-foreground/60 mb-3 tracking-wide">
+                Thesis Title:
+              </p>
               <h3 className="font-serif text-2xl text-foreground mb-6 leading-snug">
                 The Deformation of Masculinities, and the Anti-Caste Movement in the Western Regions of Odisha
               </h3>
 
               <div className="space-y-6 text-foreground/80 leading-relaxed">
                 <p>
-                  This doctoral project examines anti-caste movements in Western Odisha through fieldwork conducted primarily among the Ganda (Scheduled Caste) community in Kurul village and the Malgodampada urban slum in the Balangir district in 2024. It investigates how anti-caste movements function not merely as political formations but as pedagogical spaces through which ideas of emancipation, personhood, gender, and social transformation are historically produced and transmitted.
+                  This doctoral project examines anti-caste movement in Western Odisha through fieldwork conducted among, primarily, the Ganda (Scheduled Caste) community in Kurul village and Malgodampada urban-slum, Balangir district in 2024. It investigates how anti-caste movement functions as pedagogical spaces through which ideas of emancipation, personhood, gender and social transformation are historically produced and transmitted.
                 </p>
 
                 {!researchExpanded && (
@@ -198,7 +201,7 @@ export default function Home() {
                           Becoming & Emancipation
                         </h4>
                         <p>
-                          This research develops arguments for a sociology of becoming by studying anti-caste movements as sites where emancipatory practices are produced, learned, transmitted, contested, and transformed across generations. The movement is approached as a pedagogical space where subversion is thought and practised, generating possibilities for both emancipation in general and gender emancipation in particular.
+                          This research develops arguments for a sociology of becoming by studying anti-caste movement as a site where emancipatory practices are produced, learned, transmitted, contested, and transformed across generations. The movement is approached as a pedagogical space, where subversion is thought about and practised, that begets possibilities for emancipation in general, and gender emancipation in particular.
                         </p>
                       </div>
 
@@ -207,7 +210,7 @@ export default function Home() {
                           Reconstructing Probable Pasts
                         </h4>
                         <p>
-                          The project develops a rationale and the theoretical and methodological frameworks for reconstructing what are termed “probable pasts” through folk myths, ritual narratives, oral traditions, and performance practices. These narratives are situated within the historical ontology of the communities’ ‘self’, and the project examines how marginalized communities use ‘probable pasts’ to negotiate contemporary understandings of community-self, caste, and gender.
+                          The project develops rationale, and theoretical and methodological frameworks for reconstructing what are termed "probable pasts", and eliminating the caste-Hindu imposition of alternative past - through folk myths, ritual narratives, oral traditions, and performance practices. These narratives are situated within the historical ontology of communities' 'self', and it examines how marginalized communities use 'probable pasts' to negotiate contemporary understandings of community-self, caste, and gender.
                         </p>
                       </div>
 
@@ -216,7 +219,7 @@ export default function Home() {
                           Folk Culture, Performance & Gender
                         </h4>
                         <p>
-                          Drawing on folk songs, two theatrical performances, and a possession ritual, the research develops a grounded understanding of gender within anti-caste folk cultures. Particular attention is given to the emancipatory possibilities these cultural forms generate, as well as the contradictions, paradoxes, and limits they contain.
+                          Drawing on folk songs, two theatrical performances, and a possession ritual, the research develops a grounded understanding of gender within anti-caste folk cultures. This research studies the emancipatory possibilities these cultural forms generate, as well as the contradictions, paradoxes and limits they contain.
                         </p>
                       </div>
 
@@ -225,7 +228,7 @@ export default function Home() {
                           Critique of Gender & Masculinity Studies
                         </h4>
                         <p>
-                          This project argues that even certain idiographic studies risk making positive laws in their study of caste and gender, and in turn creating racialised subjects. This research understands the limits of gender and masculinities studies and discourses that generalize masculinity or treat it as ahistorical or historically fixed. In contrast, the research conceptualizes the study of gender emancipation through anti-caste movements, framing gender and masculinities as historically evolving categories.
+                          This project critiques that even certain idiographic studies risk making positive laws in their study of caste and gender, and in return creating racialised subjects. This research understands the limits of gender and masculinities studies, and discourses, that generalizes masculinity or treat it as ahistorical or historically fixed. In contrast, the research conceptualises studying gender emancipation through anti-caste movements, where it understands gender and masculinities as historically evolving categories. This research argues on how to move past intersectionality framework for studying caste and gender.
                         </p>
                       </div>
                     </div>
