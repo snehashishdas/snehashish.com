@@ -31,6 +31,8 @@ export default function PublicationsPage() {
       title: "CAST(E)ING QUEERNESS",
       author: "Snehashish Das",
       journal: "International Journal of Advance and Applied Research",
+      volume: "8",
+      issue: "1",
       abstract: "This paper examines the relationship between caste and queerness in India, arguing that caste is not merely an intersecting identity but a constitutive force that shapes queer lives, identities, and political possibilities. Drawing on the writings of Bahujan, queer and trans scholars and activists, it explores how caste and heteropatriarchy operate through institutions such as family, marriage, and the state to regulate gender and sexuality. The paper demonstrates how caste invisibilises queer subjects, structures access to dignity, labour, and citizenship, and reinforces compulsory heterosexuality. It further interrogates caste privilege within queer movements, highlighting the persistence of ‘upper-caste’ dominance, homonormativity, and the myth of castelessness. By centering the experiences of Bahujan queer persons, the paper argues that queer politics cannot be separated from anti-caste struggle. It concludes that meaningful queer liberation requires an explicit commitment to anti-caste politics, solidarity, and social justice.",
       link: "https://ijaar.co.in/wp-content/uploads/2026/06/080132.pdf",
     },
@@ -202,7 +204,9 @@ export default function PublicationsPage() {
                           <p className="text-sm text-muted-foreground">
                             {article.journal
                               ? article.volume
-                                ? `${article.author} · ${article.journal}, ${article.volume}(${article.issue}), ${article.year}`
+                                ? article.year
+                                  ? `${article.author} · ${article.journal}, ${article.volume}(${article.issue}), ${article.year}`
+                                  : `${article.author} · ${article.journal}, ${article.volume}(${article.issue})`
                                 : `${article.author} · ${article.journal}`
                               : article.author}
                           </p>
@@ -211,7 +215,7 @@ export default function PublicationsPage() {
 
                       <AccordionContent className="pt-8 pb-0 space-y-6">
                         <div>
-                          {article.journal && article.volume && (
+                          {article.journal && article.volume && article.year && (
                             <p className="text-sm md:text-base text-foreground/75 leading-relaxed mb-6">
                               <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">Citation:</span>{" "}
                               {article.author}. "{article.title}." <em>{article.journal}</em> {article.volume}, no. {article.issue} ({article.year}): {article.pages}.
