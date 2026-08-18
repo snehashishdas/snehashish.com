@@ -503,7 +503,7 @@ export default function CommunityPage() {
           </div>
 
           {/* SECTION 1: Invited Panel Discussions and Talks */}
-          <section className="mb-28 md:mb-40">
+          <section id="panel-discussions" className="mb-28 md:mb-40">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
               Invited Panel Discussions and Talks (Selected)
             </h2>
@@ -513,6 +513,7 @@ export default function CommunityPage() {
                 <AccordionItem
                   key={theme.id}
                   value={theme.id}
+                  id={theme.id}
                   className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8"
                   style={{
                     borderLeftWidth: '4px',
@@ -554,7 +555,7 @@ export default function CommunityPage() {
           </section>
 
           {/* SECTION 2: Community Education & Teaching Initiatives */}
-          <section className="mb-28 md:mb-40 border-t border-border pt-28 md:pt-40">
+          <section id="community-education" className="mb-28 md:mb-40 border-t border-border pt-28 md:pt-40">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-6 tracking-wide">
               Community Education & Teaching Initiatives
             </h2>
@@ -648,7 +649,7 @@ export default function CommunityPage() {
           </section>
 
           {/* SECTION 3: Advocacy, Training, Workshops & Conventions — unified archive */}
-          <section className="mb-28 md:mb-40 border-t border-border pt-28 md:pt-40">
+          <section id="advocacy-training-workshops" className="mb-28 md:mb-40 border-t border-border pt-28 md:pt-40">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
               Advocacy, Training, Workshops & Conventions
             </h2>
@@ -672,6 +673,7 @@ export default function CommunityPage() {
                       <AccordionItem
                         key={entry.id}
                         value={entry.id}
+                        id={entry.id}
                         className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8"
                       >
                         <AccordionTrigger className="py-0 hover:no-underline group">
@@ -699,7 +701,7 @@ export default function CommunityPage() {
           </section>
 
           {/* SECTION 4: Diary's Entries, don't ask */}
-          <section className="border-t border-border pt-28 md:pt-40">
+          <section id="diarys-entries" className="border-t border-border pt-28 md:pt-40">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
               Diary's Entries, don't ask
             </h2>
@@ -708,6 +710,7 @@ export default function CommunityPage() {
               {/* Event Management & Programming */}
               <AccordionItem
                 value="event-management"
+                id="event-management"
                 className="border border-border/40 rounded-sm px-5 md:px-7 py-4 md:py-5"
               >
                 <AccordionTrigger className="py-0 hover:no-underline group">
@@ -743,6 +746,7 @@ export default function CommunityPage() {
               {/* Institutional Initiatives */}
               <AccordionItem
                 value="institutional"
+                id="institutional"
                 className="border border-border/40 rounded-sm px-5 md:px-7 py-4 md:py-5"
               >
                 <AccordionTrigger className="py-0 hover:no-underline group">
@@ -773,6 +777,7 @@ export default function CommunityPage() {
               {/* Community Engagement */}
               <AccordionItem
                 value="community-engagement"
+                id="community-engagement"
                 className="border border-border/40 rounded-sm px-5 md:px-7 py-4 md:py-5"
               >
                 <AccordionTrigger className="py-0 hover:no-underline group">

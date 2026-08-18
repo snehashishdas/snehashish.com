@@ -186,7 +186,7 @@ export default function PublicationsPage() {
 
             <Accordion type="single" collapsible className="space-y-6">
               {/* Subsection A: Research Articles */}
-              <div>
+              <div id="research-articles">
                 <h3 className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-6">
                   Research Articles
                 </h3>
@@ -261,7 +261,7 @@ export default function PublicationsPage() {
               </div>
 
               {/* Subsection B: Book Reviews */}
-              <div className="pt-8 md:pt-12">
+              <div id="book-reviews" className="pt-8 md:pt-12">
                 <h3 className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-6">
                   Book Reviews
                 </h3>
@@ -296,7 +296,7 @@ export default function PublicationsPage() {
           </section>
 
           {/* SECTION 2: Creative Works */}
-          <section className="py-28 md:py-40 border-b border-border">
+          <section id="creative-works" className="py-28 md:py-40 border-b border-border">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
               Creative Works
             </h2>
@@ -347,7 +347,7 @@ export default function PublicationsPage() {
           </section>
 
           {/* SECTION 3: Public Scholarship */}
-          <section className="py-28 md:py-40 border-b border-border">
+          <section id="public-scholarship" className="py-28 md:py-40 border-b border-border">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
               Public Scholarship
             </h2>

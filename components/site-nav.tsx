@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { SearchNavButton, SearchNavRow } from '@/components/site-search'
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -54,6 +55,7 @@ export function SiteNav() {
               </Link>
             )
           })}
+          <SearchNavButton className="pl-1" />
         </nav>
 
         {/* Mobile toggle */}
@@ -111,6 +113,7 @@ export function SiteNav() {
                 </Link>
               )
             })}
+            <SearchNavRow />
           </div>
         </nav>
       )}

@@ -41,6 +41,7 @@ export function ContactSection() {
 
   return (
     <section
+      id="contact"
       className="border-t border-border bg-background py-24 md:py-32"
       style={{ ['--page-accent' as keyof CSSProperties]: 'var(--color-accent)' } as CSSProperties}
     >

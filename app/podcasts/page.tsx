@@ -61,14 +61,14 @@ export default function PodcastsPage() {
           </div>
 
           {/* Featured Conversations */}
-          <section className="pb-28 md:pb-40">
+          <section id="featured-conversations" className="pb-28 md:pb-40">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
               Featured Conversations
             </h2>
 
             <div className="space-y-24 md:space-y-32">
               {conversations.map((conversation, idx) => (
-                <article key={conversation.id} className="space-y-8">
+                <article key={conversation.id} id={`conversation-${conversation.id}`} className="space-y-8">
                   {/* Conversation Grid: Image + Content */}
                   <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start ${idx % 2 === 1 ? 'md:grid-cols-2 md:[&>:first-child]:order-2 md:[&>:nth-child(2)]:order-1' : ''}`}>
                     {/* Image */}

@@ -220,7 +220,7 @@ export default function ResearchPage() {
       </section>
 
       {/* Conference Presentations - Research Themes */}
-      <section className="py-28 md:py-40 bg-background border-b border-border">
+      <section id="conference-presentations" className="py-28 md:py-40 bg-background border-b border-border">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-12">
           <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
             Conference Presentations
@@ -231,6 +231,7 @@ export default function ResearchPage() {
               <AccordionItem 
                 key={theme.id} 
                 value={theme.id}
+                id={theme.id}
                 className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 hover:border-foreground/20 transition-colors duration-200"
               >
                 <AccordionTrigger className="py-0 hover:no-underline group">
@@ -273,7 +274,7 @@ export default function ResearchPage() {
       </section>
 
       {/* Teaching Experience */}
-      <section className="py-28 md:py-40 bg-background border-b border-border">
+      <section id="teaching-experiences" className="py-28 md:py-40 bg-background border-b border-border">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-12">
           <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
             Teaching Experiences
@@ -349,7 +350,7 @@ export default function ResearchPage() {
       </section>
 
       {/* Research & Field Experiences */}
-      <section className="py-28 md:py-40 bg-background border-b border-border">
+      <section id="research-field-experiences" className="py-28 md:py-40 bg-background border-b border-border">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-12">
           <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
             Research & Field Experiences
@@ -448,7 +449,7 @@ export default function ResearchPage() {
       </section>
 
       {/* Professional Activities */}
-      <section className="py-28 md:py-40 bg-background border-b border-border">
+      <section id="professional-activities" className="py-28 md:py-40 bg-background border-b border-border">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-12">
           <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
             Professional Activities
@@ -459,6 +460,7 @@ export default function ResearchPage() {
               <AccordionItem 
                 key={activity.id}
                 value={activity.id}
+                id={activity.id}
                 className="border border-border/40 rounded-sm px-6 md:px-8 py-6 md:py-8 hover:border-foreground/20 transition-colors duration-200"
               >
                 <AccordionTrigger className="py-0 hover:no-underline group">

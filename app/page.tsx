@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ContactSection } from '@/components/contact-section'
+import { SearchHeroButton } from '@/components/site-search'
 
 const navLinks = [
   { href: '/publications', label: 'Publications' },
@@ -115,6 +116,7 @@ export default function Home() {
                 {link.label}
               </Link>
             ))}
+            <SearchHeroButton />
           </nav>
         </div>
       </section>
@@ -153,6 +155,7 @@ export default function Home() {
                   {link.label}
                 </Link>
               ))}
+              <SearchHeroButton />
             </nav>
           </div>
         </div>
@@ -164,7 +167,7 @@ export default function Home() {
         Layout, typography, spacing, hierarchy, and expand/collapse structure
         are preserved exactly as in the approved design.
       */}
-      <section className="py-24 md:py-32 bg-background border-t border-border">
+      <section id="phd-dissertation" className="py-24 md:py-32 bg-background border-t border-border">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-12">
           <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-12 tracking-wide">
             PhD Dissertation Details
@@ -187,6 +190,8 @@ export default function Home() {
                 {!researchExpanded && (
                   <button
                     onClick={() => setResearchExpanded(true)}
+                    aria-expanded={researchExpanded}
+                    aria-controls="phd-dissertation-details"
                     className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:opacity-80 transition-opacity mt-2"
                   >
                     Continue Reading →
@@ -195,7 +200,7 @@ export default function Home() {
 
                 {researchExpanded && (
                   <>
-                    <div className="pt-6 border-t border-border/50 space-y-8">
+                    <div id="phd-dissertation-details" className="pt-6 border-t border-border/50 space-y-8">
                       <div>
                         <h4 className="font-serif text-lg text-foreground mb-4 tracking-wide uppercase text-sm">
                           Becoming & Emancipation
@@ -235,6 +240,8 @@ export default function Home() {
 
                     <button
                       onClick={() => setResearchExpanded(false)}
+                      aria-expanded={researchExpanded}
+                      aria-controls="phd-dissertation-details"
                       className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:opacity-80 transition-opacity mt-4"
                     >
                       Hide
@@ -248,7 +255,7 @@ export default function Home() {
       </section>
 
       {/* Areas of Interest */}
-      <section className="bg-background py-24 md:py-32">
+      <section id="areas-of-interest" className="bg-background py-24 md:py-32">
         <div className="mx-auto w-full max-w-4xl px-6 md:px-12">
           <h2 className="mb-12 font-serif text-2xl tracking-wide text-foreground md:text-3xl">
             Areas of Interest
@@ -267,7 +274,7 @@ export default function Home() {
       </section>
 
       {/* Academic Journey */}
-      <section className="border-t border-border bg-background py-24 md:py-32">
+      <section id="academic-journey" className="border-t border-border bg-background py-24 md:py-32">
         <div className="mx-auto w-full max-w-4xl px-6 md:px-12">
           <h2 className="mb-12 font-serif text-2xl tracking-wide text-foreground md:text-3xl">
             Academic Journey
@@ -292,7 +299,7 @@ export default function Home() {
       </section>
 
       {/* Reflection Quote */}
-      <section className="border-t border-foreground bg-foreground/98 py-32 text-background md:py-40">
+      <section id="reflection-quote" className="border-t border-foreground bg-foreground/98 py-32 text-background md:py-40">
         <div className="mx-auto w-full max-w-3xl px-6 md:px-12">
           <blockquote className="space-y-8 text-center">
             <p className="font-serif leading-tight text-background text-[clamp(2rem,5vw,3.5rem)]">
