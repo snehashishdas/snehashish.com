@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ContactSection } from '@/components/contact-section'
 import { SearchHeroButton } from '@/components/site-search'
+import { heroBio, phdDissertation, interests, journey, reflectionQuote } from '@/lib/content/home'
 
 const navLinks = [
   { href: '/publications', label: 'Publications' },
@@ -12,41 +13,6 @@ const navLinks = [
   { href: '/podcasts', label: 'Podcasts' },
   { href: '/community', label: 'Community' },
 ]
-
-const interests = [
-  'Methodology of Social Sciences & Sociology',
-  'Cultural Sociology',
-  'Gender Studies & Queer Theory',
-  'Ambedkarian Perspective',
-  'Anti-Caste Movements',
-  'Folk Culture',
-  'Religion Studies',
-  'Historical Methods',
-  'Performance Studies',
-]
-
-const journey = [
-  {
-    years: '2020–2026',
-    title: 'PhD in Sociology',
-    institution:
-      'Centre for the Study of Social Systems (CSSS), School of Social Sciences (SSS), Jawaharlal Nehru University',
-  },
-  {
-    years: '2018–2020',
-    title: 'MA in Sociology',
-    institution:
-      'Centre for the Study of Social Systems (CSSS), School of Social Sciences (SSS), Jawaharlal Nehru University',
-  },
-  {
-    years: '2015–2018',
-    title: 'BA in Social Sciences',
-    institution: 'Tata Institute of Social Sciences, Guwahati',
-  },
-]
-
-const BIO =
-  'Snehashish Das is a doctoral candidate in Sociology at Jawaharlal Nehru University (JNU), New Delhi, India. Their work explores anti-caste movements, folk histories, folk cultures, religion, and subversive masculinities in Western Odisha, India. Alongside academic research, they write for public platforms and engage with anti-caste creative and literary practices. On a side note, Snehashish loves to explore, cook, and experiment with different cultural cuisines, which this website does not elaborate upon.'
 
 export default function Home() {
   const [researchExpanded, setResearchExpanded] = useState(false)
@@ -109,7 +75,7 @@ export default function Home() {
       <section className="bg-foreground px-7 py-16 text-background md:hidden">
         <div className="space-y-9">
           <div className="h-px w-16 bg-background/30" aria-hidden="true" />
-          <p className="text-[0.975rem] leading-[1.75] text-background/80">{BIO}</p>
+          <p className="text-[0.975rem] leading-[1.75] text-background/80">{heroBio}</p>
           <nav aria-label="Sections" className="flex flex-wrap gap-3">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className="btn-hero">
@@ -147,7 +113,7 @@ export default function Home() {
               <div className="h-px w-16 bg-background/30" aria-hidden="true" />
             </div>
 
-            <p className="measure text-base leading-[1.75] text-background/75">{BIO}</p>
+            <p className="measure text-base leading-[1.75] text-background/75">{heroBio}</p>
 
             <nav aria-label="Sections" className="flex flex-wrap gap-3 pt-1">
               {navLinks.map((link) => (
@@ -176,15 +142,15 @@ export default function Home() {
           <div className="space-y-8">
             <div>
               <p className="text-sm font-medium text-foreground/60 mb-3 tracking-wide">
-                Thesis Title:
+                {phdDissertation.thesisLabel}
               </p>
               <h3 className="font-serif text-2xl text-foreground mb-6 leading-snug">
-                The Deformation of Masculinities, and the Anti-Caste Movement in the Western Regions of Odisha
+                {phdDissertation.thesisTitle}
               </h3>
 
               <div className="space-y-6 text-foreground/80 leading-relaxed">
                 <p>
-                  This doctoral project examines anti-caste movement in Western Odisha through fieldwork conducted among, primarily, the Ganda (Scheduled Caste) community in Kurul village and Malgodampada urban-slum, Balangir district in 2024. It investigates how anti-caste movement functions as pedagogical spaces through which ideas of emancipation, personhood, gender and social transformation are historically produced and transmitted.
+                  {phdDissertation.summary}
                 </p>
 
                 {!researchExpanded && (
@@ -201,41 +167,14 @@ export default function Home() {
                 {researchExpanded && (
                   <>
                     <div id="phd-dissertation-details" className="pt-6 border-t border-border/50 space-y-8">
-                      <div>
-                        <h4 className="font-serif text-lg text-foreground mb-4 tracking-wide uppercase text-sm">
-                          Becoming & Emancipation
-                        </h4>
-                        <p>
-                          This research develops arguments for a sociology of becoming by studying anti-caste movement as a site where emancipatory practices are produced, learned, transmitted, contested, and transformed across generations. The movement is approached as a pedagogical space, where subversion is thought about and practised, that begets possibilities for emancipation in general, and gender emancipation in particular.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-serif text-lg text-foreground mb-4 tracking-wide uppercase text-sm">
-                          Reconstructing Probable Pasts
-                        </h4>
-                        <p>
-                          The project develops rationale, and theoretical and methodological frameworks for reconstructing what are termed "probable pasts", and eliminating the caste-Hindu imposition of alternative past - through folk myths, ritual narratives, oral traditions, and performance practices. These narratives are situated within the historical ontology of communities' 'self', and it examines how marginalized communities use 'probable pasts' to negotiate contemporary understandings of community-self, caste, and gender.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-serif text-lg text-foreground mb-4 tracking-wide uppercase text-sm">
-                          Folk Culture, Performance & Gender
-                        </h4>
-                        <p>
-                          Drawing on folk songs, two theatrical performances, and a possession ritual, the research develops a grounded understanding of gender within anti-caste folk cultures. This research studies the emancipatory possibilities these cultural forms generate, as well as the contradictions, paradoxes and limits they contain.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-serif text-lg text-foreground mb-4 tracking-wide uppercase text-sm">
-                          Critique of Gender & Masculinity Studies
-                        </h4>
-                        <p>
-                          This project critiques that even certain idiographic studies risk making positive laws in their study of caste and gender, and in return creating racialised subjects. This research understands the limits of gender and masculinities studies, and discourses, that generalizes masculinity or treat it as ahistorical or historically fixed. In contrast, the research conceptualises studying gender emancipation through anti-caste movements, where it understands gender and masculinities as historically evolving categories. This research argues on how to move past intersectionality framework for studying caste and gender.
-                        </p>
-                      </div>
+                      {phdDissertation.sections.map((section) => (
+                        <div key={section.heading}>
+                          <h4 className="font-serif text-lg text-foreground mb-4 tracking-wide uppercase text-sm">
+                            {section.heading}
+                          </h4>
+                          <p>{section.body}</p>
+                        </div>
+                      ))}
                     </div>
 
                     <button
@@ -303,11 +242,11 @@ export default function Home() {
         <div className="mx-auto w-full max-w-3xl px-6 md:px-12">
           <blockquote className="space-y-8 text-center">
             <p className="font-serif leading-tight text-background text-[clamp(2rem,5vw,3.5rem)]">
-              “If caste remains, liberation cannot.
+              {`“${reflectionQuote.line1}`}
               <br />
-              If liberation emerges, caste cannot remain.”
+              {`${reflectionQuote.line2}”`}
             </p>
-            <p className="text-sm tracking-wider text-background/70 md:text-base">— Bhima Bhoi</p>
+            <p className="text-sm tracking-wider text-background/70 md:text-base">{`— ${reflectionQuote.attribution}`}</p>
           </blockquote>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import { searchIndex, type SearchEntry } from '@/lib/search-index'
+import { searchIndex, type SearchEntry } from '@/lib/search-index.generated'
 
 export type SearchResult = {
   entry: SearchEntry

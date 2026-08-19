@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { SiteFooter } from '@/components/site-footer'
-import { SiteSearchProvider, SiteSearchInline } from '@/components/site-search'
+import { SiteSearchProvider } from '@/components/site-search'
 import { AnchorNavigator } from '@/components/anchor-navigator'
 import './globals.css'
 
@@ -180,7 +180,6 @@ export default function RootLayout({
         <SiteSearchProvider>
           <AnchorNavigator />
           {children}
-          <SiteSearchInline />
           <SiteFooter />
         </SiteSearchProvider>
         <script
