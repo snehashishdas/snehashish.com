@@ -14,3 +14,7 @@ node_modules
 .next/
 .DS_Store
 .vercel
+
+# Auto-generated search index — regenerated automatically on every build/dev
+# start (see next.config.mjs and scripts/generate-search-index.mjs).
+lib/search-index.generated.ts

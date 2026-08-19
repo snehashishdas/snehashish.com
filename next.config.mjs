@@ -1,3 +1,28 @@
+import { execFileSync } from 'node:child_process'
+import { fileURLToPath } from 'node:url'
+import path from 'node:path'
+
+// Regenerate the search index from lib/content/*.ts before Next.js reads
+// any pages. This runs on every `next build`, `next dev`, and `next start`
+// invocation — however the command is invoked (npm, yarn, pnpm, or a host
+// platform calling `next build` directly) — so the search index always
+// reflects the site's current content with no manual step required.
+//
+// Runs as a plain Node script (no extra CLI/dependency required — the
+// script itself uses the project's existing `typescript` package to read
+// lib/content/*.ts) so there's nothing new to keep in sync across
+// package-lock.json / pnpm-lock.yaml.
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+try {
+  execFileSync(process.execPath, ['scripts/generate-search-index.mjs'], {
+    cwd: __dirname,
+    stdio: 'inherit',
+  })
+} catch (err) {
+  console.error('[search-index] generation failed:', err instanceof Error ? err.message : err)
+  throw err
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {

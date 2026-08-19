@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { SiteFooter } from '@/components/site-footer'
+import { SiteSearchProvider } from '@/components/site-search'
+import { AnchorNavigator } from '@/components/anchor-navigator'
 import './globals.css'
 
 const siteUrl = 'https://snehashish.com'
@@ -175,8 +177,11 @@ export default function RootLayout({
         <meta name="theme-color" content="#0f1117" />
       </head>
       <body className="min-h-screen font-sans antialiased">
-        {children}
-        <SiteFooter />
+        <SiteSearchProvider>
+          <AnchorNavigator />
+          {children}
+          <SiteFooter />
+        </SiteSearchProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

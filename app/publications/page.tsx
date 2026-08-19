@@ -7,6 +7,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import {
+  researchArticles,
+  bookReviews,
+  creativeWorks,
+  publicScholarshipByYear,
+} from "@/lib/content/publications"
 
 export const metadata = {
   title: "Publications",
@@ -15,151 +21,6 @@ export const metadata = {
 }
 
 export default function PublicationsPage() {
-  const researchArticles = [
-    {
-      title: "Fracturing the Historical Continuity on Truth: Jotiba Phule in the Quest for Personhood of Shudras",
-      author: "Snehashish Das",
-      journal: "CASTE: A Global Journal on Social Exclusion",
-      volume: "2",
-      issue: "1",
-      year: "2021",
-      pages: "30–46",
-      doi: "https://doi.org/10.26812/caste.v2i1.265",
-      abstract: "Anti-caste traditions in India work to understand and examine the idea of personhood which the majority in India is deprived of by virtue of being born in the lower rungs of the caste hierarchy. This paper examines the historical continuity in Brahminism and the rupture Jotiba Phule presents to it through his art and activism which serves to disturb the regular flow of singular continuity of what is perceived as history and historiography. Jotiba's quest is for finding the essence / personhood of, what Butler calls, a 'precarious subject' and recognizing that precarious subject – the Shudra, as a subject of history. But the personhood of this precarious subject is never a complete personhood. Therefore, Jotiba attempts to unveil the path towards achieving complete personhood which is embedded in reaffirming the lost or concealed truth – by discontinuing the historical flow of the social structure of caste and establishing a new subject rising out of crisis in social structure in history. I have chosen two works from Jotiba's works as new methodological tools for history writing and historical criticism, and made hermeneutical and phenomenological readings of both. The works are his poem Kulambin (a peasant woman), and the Satyashodhak (truth-seeker) marriage as the public performance of protest, as they are both the essential and the mundane to his life, which exemplifies the truth Jotiba followed and established an organization, Satyashodhak Samaj (Society of Truth Seekers), as a testament to it.",
-    },
-    {
-      title: "CAST(E)ING QUEERNESS",
-      author: "Snehashish Das",
-      journal: "International Journal of Advance and Applied Research",
-      volume: "8",
-      issue: "1",
-      year: "2020",
-      abstract: "This paper examines the relationship between caste and queerness in India, arguing that caste is not merely an intersecting identity but a constitutive force that shapes queer lives, identities, and political possibilities. Drawing on the writings of Bahujan, queer and trans scholars and activists, it explores how caste and heteropatriarchy operate through institutions such as family, marriage, and the state to regulate gender and sexuality. The paper demonstrates how caste invisibilises queer subjects, structures access to dignity, labour, and citizenship, and reinforces compulsory heterosexuality. It further interrogates caste privilege within queer movements, highlighting the persistence of ‘upper-caste’ dominance, homonormativity, and the myth of castelessness. By centering the experiences of Bahujan queer persons, the paper argues that queer politics cannot be separated from anti-caste struggle. It concludes that meaningful queer liberation requires an explicit commitment to anti-caste politics, solidarity, and social justice.",
-      link: "https://ijaar.co.in/wp-content/uploads/2026/06/080132.pdf",
-    },
-  ]
-
-  const bookReviews = [
-    {
-      title: "Stan Swamy, I Am Not a Silent Spectator: Why Truth Has Become So Bitter, Dissent So Intolerable, Justice So Out of Reach",
-      journal: "Social Change",
-      volume: "53",
-      issue: "4",
-      year: "2023",
-      doi: "https://doi.org/10.1177/00490857231203426",
-    },
-    {
-      title: "Vivek Kumar, Decoding Ambedkar: Ideas of Nation and Nation Building",
-      journal: "International Sociology",
-      volume: "40",
-      issue: "5",
-      year: "2025",
-      doi: "https://doi.org/10.1177/02685809251395395",
-    },
-  ]
-
-  const creativeWorks = [
-    {
-      type: "Speculative Fiction",
-      title: "Death Of A Giant In A Godless Country",
-      published: "The Blaft Book of Anti-Caste SF",
-      editors: ["R. T. Samuel", "Rakesh K.", "Rashmi R. D."],
-      year: "2024",
-      isbn: ["9789380636726", "9789380636733"],
-      link: "https://www.blaft.com/products/the-blaft-book-of-anti-caste-sf",
-    },
-    {
-      type: "Poem",
-      title: "Everyone Says",
-      published: "The World That Belongs To Us: An Anthology of Queer Poetry from South Asia",
-      editors: ["Aditi Angiras", "Akhil Katyal"],
-      year: "2020",
-      isbn: ["9353574579", "9789353574574"],
-      link: "https://harpercollins.co.in/product/the-world-that-belongs-to-us/",
-    },
-  ]
-
-  const publicScholarshipByYear: Record<number, Array<{
-    title: string
-    publication: string
-    link: string
-  }>> = {
-    2025: [
-      {
-        title: "A Masala Khichdi Called Dhadak 2",
-        publication: "Round Table India",
-        link: "https://www.roundtableindia.co.in/a-masala-khichdi-called-dhadak-2/",
-      },
-    ],
-    2023: [
-      {
-        title: "Ambedkarite Questions for Neeraj Ghaywan's The Heart Skipped A Beat",
-        publication: "Round Table India",
-        link: "https://www.roundtableindia.co.in/ambedkarite-questions-for-neeraj-ghaywans-the-heart-skipped-a-beat/",
-      },
-      {
-        title: "Dalit Policing and Policing Dalits: A Shift in Hindi Cinema",
-        publication: "Round Table India",
-        link: "https://www.roundtableindia.co.in/dalit-policing-and-policing-dalits-a-shift-in-hindi-films/",
-      },
-      {
-        title: "Dhondiba's Challenge: Restaging Gulamgiri",
-        publication: "Proseterity",
-        link: "https://www.proseterity.com/dhondibas-challenge/",
-      },
-    ],
-    2022: [
-      {
-        title: "Caste Hindu Nationalism and Trans Citizenship",
-        publication: "Mavelinadu",
-        link: "https://mavelinaducollective.com/caste-hindu-nationalism-trans-citizenship-snehashish-das/",
-      },
-    ],
-    2021: [
-      {
-        title: "Memories of the Father of Our Movements, Father Stan Swamy",
-        publication: "Economic & Political Weekly",
-        link: "https://www.epw.in/journal/2021/29/postscript/memories-father-our-movements-father-stan-swamy.html",
-      },
-      {
-        title: "Educators for All Time: Jotiba, Savitri and Fatima",
-        publication: "Aura",
-        link: "https://auramag.in/educators-for-all-time-jotiba-savitri-and-fatima/",
-      },
-    ],
-    2020: [
-      {
-        title: "The Essence of Jyotiba Phule's Revolution Lay in His Rationality",
-        publication: "The Wire",
-        link: "https://thewire.in/caste/jyotiba-phule-philosophy",
-      },
-      {
-        title: "A Universal Mother and the Secular Others",
-        publication: "Maktoob",
-        link: "https://maktoobmedia.com/public/post?id=17892&slug=opinion-2019-10-16-a-universal-mother-and-the-secular-others",
-      },
-    ],
-    2018: [
-      {
-        title: "#InjusTISS: The TISS Student Struggle Against Cutting Financial Aid for SC, ST and OBC Students",
-        publication: "Feminism in India",
-        link: "https://feminisminindia.com/2018/03/01/injustiss-tiss-student-struggle/",
-      },
-    ],
-    2016: [
-      {
-        title: "JNU Row Brought Up the Politics Behind Defining Nationalism and Its (Mis)Uses",
-        publication: "Youth Ki Awaaz",
-        link: "https://www.youthkiawaaz.com/2016/03/definitions-of-nationalism/",
-      },
-      {
-        title: "Why I Think Sanskritisation Can't Fight Caste Discrimination in Society",
-        publication: "Youth Ki Awaaz",
-        link: "https://www.youthkiawaaz.com/2016/07/critique-of-sanskritisation-cannot-end-caste-discrimination/",
-      },
-    ],
-  }
-
   const years = Object.keys(publicScholarshipByYear)
     .map(Number)
     .sort((a, b) => b - a)
@@ -186,7 +47,7 @@ export default function PublicationsPage() {
 
             <Accordion type="single" collapsible className="space-y-6">
               {/* Subsection A: Research Articles */}
-              <div>
+              <div id="research-articles">
                 <h3 className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-6">
                   Research Articles
                 </h3>
@@ -261,7 +122,7 @@ export default function PublicationsPage() {
               </div>
 
               {/* Subsection B: Book Reviews */}
-              <div className="pt-8 md:pt-12">
+              <div id="book-reviews" className="pt-8 md:pt-12">
                 <h3 className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-6">
                   Book Reviews
                 </h3>
@@ -296,7 +157,7 @@ export default function PublicationsPage() {
           </section>
 
           {/* SECTION 2: Creative Works */}
-          <section className="py-28 md:py-40 border-b border-border">
+          <section id="creative-works" className="py-28 md:py-40 border-b border-border">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
               Creative Works
             </h2>
@@ -347,7 +208,7 @@ export default function PublicationsPage() {
           </section>
 
           {/* SECTION 3: Public Scholarship */}
-          <section className="py-28 md:py-40 border-b border-border">
+          <section id="public-scholarship" className="py-28 md:py-40 border-b border-border">
             <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-16 tracking-wide">
               Public Scholarship
             </h2>
