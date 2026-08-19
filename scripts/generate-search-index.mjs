@@ -9,17 +9,47 @@
 // `next build`, `next dev`, and `next start`, so there is nothing to run
 // by hand after an ordinary content edit.
 
-import { writeFileSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
+import { writeFileSync, readFileSync, mkdtempSync, rmSync } from 'node:fs'
+import { fileURLToPath, pathToFileURL } from 'node:url'
+import { tmpdir } from 'node:os'
 import path from 'node:path'
-
-import * as home from '../lib/content/home'
-import * as publications from '../lib/content/publications'
-import * as research from '../lib/content/research'
-import * as podcasts from '../lib/content/podcasts'
-import * as community from '../lib/content/community'
+import ts from 'typescript'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const contentDir = path.join(__dirname, '..', 'lib', 'content')
+
+// Load a lib/content/*.ts module without needing any extra TypeScript-running
+// dependency (like tsx/ts-node): the `typescript` package is already a
+// project dependency (used for the app's own type-checking), so we reuse its
+// transpileModule API to strip types from just this one file, write the
+// plain-JS result to a temp file, and import it. This keeps the search-index
+// generator dependency-free — no new package to keep in sync across
+// package-lock.json / pnpm-lock.yaml.
+const tmpDir = mkdtempSync(path.join(tmpdir(), 'search-index-'))
+
+async function loadContentModule(fileBaseName) {
+  const tsPath = path.join(contentDir, `${fileBaseName}.ts`)
+  const source = readFileSync(tsPath, 'utf-8')
+  const { outputText } = ts.transpileModule(source, {
+    compilerOptions: {
+      module: ts.ModuleKind.ESNext,
+      target: ts.ScriptTarget.ES2020,
+      esModuleInterop: true,
+    },
+    fileName: tsPath,
+  })
+  const tmpFile = path.join(tmpDir, `${fileBaseName}.mjs`)
+  writeFileSync(tmpFile, outputText, 'utf-8')
+  return import(pathToFileURL(tmpFile).href)
+}
+
+const home = await loadContentModule('home')
+const publications = await loadContentModule('publications')
+const research = await loadContentModule('research')
+const podcasts = await loadContentModule('podcasts')
+const community = await loadContentModule('community')
+
+rmSync(tmpDir, { recursive: true, force: true })
 
 /** @typedef {{ id: string, page: string, url: string, anchor?: string, heading: string, text: string }} SearchEntry */
 
